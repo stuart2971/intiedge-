@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 26: Journey Persona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#44546E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px}
+  h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  a{text-decoration:none;color:var(--blue)}
+
+  header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .nav img{height:46px}
+  .nav ul{display:flex;gap:34px;list-style:none}
+  .nav ul a{color:var(--navy);font-weight:600;font-size:16px}
+  .nav ul a:hover{color:var(--blue)}
+  .btn{display:inline-block;background:var(--navy);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:15.5px;padding:16px 34px;transition:background .25s,transform .15s}
+  .btn:hover{background:var(--blue)}
+  .btn:active{transform:translateY(1px)}
+  .btn.lt{background:#fff;color:var(--navy)}
+  .btn.lt:hover{background:var(--mist)}
+
+  .sb-only{display:none}
+  body.sb .sb-only{display:revert}
+  body.sb .mm-only{display:none}
+  @media (prefers-reduced-motion: no-preference){
+    body.switched .swap{animation:swapin .45s cubic-bezier(.16,1,.3,1)}
+    @keyframes swapin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  }
+
+  /* hero with choice */
+  .hero{padding:80px 0 88px;background:linear-gradient(180deg,var(--mist) 0%,#fff 100%)}
+  .hero .choice{margin-bottom:36px}
+  .hero .q{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:19px;margin-bottom:16px}
+  .seg{display:inline-flex;background:#fff;border:1px solid var(--line);padding:6px;gap:6px;flex-wrap:wrap}
+  .seg button{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--muted);background:none;border:none;cursor:pointer;padding:17px 30px;transition:color .2s,background .25s,box-shadow .25s}
+  .seg button:hover{color:var(--navy)}
+  .seg button.on{background:var(--navy);color:#fff;box-shadow:0 8px 22px rgba(11,42,99,.25)}
+  .hero h1{font-size:clamp(34px,4.4vw,54px);line-height:1.12;letter-spacing:-.02em;font-weight:800;max-width:17em}
+  .hero h1 span{color:var(--blue)}
+  .hero p{margin:22px 0 32px;font-size:19.5px;color:var(--muted);max-width:36em}
+  .hero .hint{margin-left:18px;font-weight:600;color:var(--navy);font-size:16px}
+
+  section{padding:96px 0}
+  h2{font-size:clamp(28px,3.2vw,40px);letter-spacing:-.015em;line-height:1.18}
+  .lede{color:var(--muted);font-size:18.5px;max-width:58ch;margin-top:14px}
+
+  /* sticky-stack journey */
+  .journey-intro{padding:88px 0 28px}
+  .stack{padding-bottom:8vh}
+  .phase-card{position:sticky;top:104px;min-height:62vh;display:flex;align-items:center;margin:0 auto 6vh;max-width:1116px;
+    background:#fff;border:1px solid var(--line);box-shadow:0 24px 60px rgba(11,42,99,.12)}
+  .phase-card .in{display:grid;grid-template-columns:4fr 7fr;width:100%;min-height:62vh}
+  .phase-card .side{padding:56px;display:flex;flex-direction:column;justify-content:center;color:#fff}
+  .phase-card:nth-child(1) .side{background:var(--navy)}
+  .phase-card:nth-child(2) .side{background:#0D3A7E}
+  .phase-card:nth-child(3) .side{background:var(--teal)}
+  .phase-card:nth-child(4) .side{background:var(--blue)}
+  .phase-card .side b{font-family:Montserrat,sans-serif;font-size:clamp(24px,2.6vw,32px);font-weight:800;line-height:1.2}
+  .phase-card .side i{font-style:normal;font-weight:600;font-size:17px;opacity:.9;display:block;margin-top:10px}
+  .phase-card .main{padding:56px;display:flex;flex-direction:column;justify-content:center}
+  .phase-card .main p{color:var(--muted);font-size:17.5px;max-width:54ch}
+  .phase-card .main ul{list-style:none;margin-top:24px;columns:2;column-gap:30px}
+  .phase-card .main li{font-size:16px;padding:9px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+  .stack-note{text-align:center;color:var(--navy);font-weight:600;font-size:18px;padding-bottom:72px}
+
+  /* calculator */
+  .est{background:var(--mist)}
+  .est .panel{margin-top:52px;display:grid;grid-template-columns:7fr 5fr;border:1px solid var(--line);background:#fff;box-shadow:0 24px 60px rgba(11,42,99,.10)}
+  .est .controls{padding:52px 56px}
+  .ctl{margin-bottom:42px}
+  .ctl:last-child{margin-bottom:0}
+  .ctl label{display:flex;justify-content:space-between;align-items:baseline;gap:20px;font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:17.5px;margin-bottom:16px}
+  .ctl label output{color:var(--blue);font-size:24px;font-variant-numeric:tabular-nums;flex-shrink:0}
+  input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:7px;border-radius:4px;background:linear-gradient(90deg,var(--blue) var(--fill,50%),var(--line) var(--fill,50%));outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--blue);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--blue);cursor:pointer}
+  .ctl .hintline{font-size:16px;color:var(--muted);margin-top:12px}
+  .est .result{background:var(--navy);color:#fff;padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+  .est .result .label{font-family:Montserrat,sans-serif;font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:#7FD4E8}
+  .est .result b{font-family:Montserrat,sans-serif;font-size:clamp(44px,4.6vw,62px);font-weight:800;line-height:1.08;display:block;margin-top:12px;font-variant-numeric:tabular-nums}
+  .est .result b span{color:var(--blue)}
+  .est .result .sub{color:#C7D5F2;font-size:17px;margin-top:10px}
+  .est .result .row2{margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.2)}
+  .est .result .row2 b{font-size:clamp(32px,3vw,42px);margin-top:8px}
+  .est .result .go{margin-top:34px}
+  .est .basis{font-size:16px;color:var(--muted);margin-top:24px;max-width:74ch}
+
+  /* about navy panel */
+  .about .card{display:grid;grid-template-columns:5fr 7fr;background:linear-gradient(135deg,var(--navy) 0%,#0D3A7E 75%,#10518F 130%);color:#fff;overflow:hidden;box-shadow:0 24px 60px rgba(11,42,99,.18)}
+  .about img{width:100%;height:100%;min-height:460px;object-fit:cover;object-position:top}
+  .about .body{padding:60px}
+  .about .role{color:#7FD4E8;font-weight:700;font-family:Montserrat,sans-serif;font-size:15px;letter-spacing:.12em;text-transform:uppercase}
+  .about h2{color:#fff;margin:10px 0 0}
+  .about p{color:#D6E4FA;margin-top:18px;max-width:52ch;font-size:17.5px}
+  .about .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .about .pills span{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:9px 19px;font-size:15px;font-weight:600}
+
+  .cta .wrap{display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:center}
+  .cta h2{max-width:17em}
+  .cta p{color:var(--muted);margin-top:14px;max-width:46ch;font-size:18px}
+  .cta .actions{justify-self:end}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);padding:54px 0;font-size:16px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer img{height:50px}
+  footer a{color:var(--navy);font-weight:600}
+
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    .phase-card{position:static;min-height:0;margin-bottom:28px}
+    .phase-card .in{min-height:0}
+  }
+
+  @media (max-width: 980px){
+    .nav ul{display:none}
+    .cta .wrap{grid-template-columns:1fr;gap:36px}
+    .cta .actions{justify-self:start}
+    .phase-card{position:static;min-height:0;margin-bottom:24px}
+    .phase-card .in{grid-template-columns:1fr;min-height:0}
+    .phase-card .side,.phase-card .main{padding:36px}
+    .phase-card .main ul{columns:1}
+    .est .panel{grid-template-columns:1fr}
+    .est .controls{padding:36px 28px}
+    .about .card{grid-template-columns:1fr}
+    .seg button{font-size:15.5px;padding:14px 20px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <ul>
+      <li><a href="#journey">The Journey</a></li>
+      <li><a href="#estimator">Your Numbers</a></li>
+      <li><a href="#about">About Shelly</a></li>
+    </ul>
+    <a class="btn" href="#contact">Book a Discovery Call</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="choice">
+      <div class="q">Which sounds more like you?</div>
+      <div class="seg" role="group" aria-label="Choose your business type">
+        <button id="segMM" class="on">I lead a mid-market organization</button>
+        <button id="segSB">I run a growing small business</button>
+      </div>
+    </div>
+    <div class="swap">
+      <div class="mm-only">
+        <h1>From first conversation to <span>governed, scalable growth</span>.</h1>
+        <p>One proven path for CEOs, CFOs, boards, and owners. Keep scrolling: each phase builds on the last, exactly as it does in the work.</p>
+      </div>
+      <div class="sb-only">
+        <h1>From first conversation to <span>a business that runs itself better</span>.</h1>
+        <p>One proven path for owners. Keep scrolling: each phase builds on the last, exactly as it does in the work.</p>
+      </div>
+      <a class="btn" href="#contact">Book a Discovery Call</a>
+      <a class="hint" href="#journey">Walk the journey</a>
+    </div>
+  </div>
+</section>
+
+<div class="journey-intro" id="journey">
+  <div class="wrap">
+    <h2 class="rv">How an engagement unfolds</h2>
+  </div>
+</div>
+
+<div class="stack">
+  <div class="phase-card">
+    <div class="in">
+      <div class="side"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i></div>
+      <div class="main">
+        <p class="mm-only">Stakeholder interviews, current state assessment, process mapping, and data analysis across your organization, ending in a plain-language findings report.</p>
+        <p class="sb-only">We sit down with you and your team, map how the work actually gets done, and find where the time and money are leaking.</p>
+        <ul>
+          <li>Stakeholder Interviews</li><li>Current-State Assessment</li>
+          <li>Process Mapping</li><li>Data Analysis</li>
+          <li>Opportunity Identification</li><li>Findings Report</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="phase-card">
+    <div class="in">
+      <div class="side"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i></div>
+      <div class="main">
+        <p class="mm-only">Future state design, a strategic roadmap, and a KPI framework, with initiatives prioritized so the highest-impact work happens first.</p>
+        <p class="sb-only">Together we build a simple roadmap, prioritized for the biggest impact first, including quick wins you'll feel within weeks.</p>
+        <ul>
+          <li>Future-State Design</li><li>Strategic Roadmap</li>
+          <li>KPI Framework</li><li>Initiative Prioritization</li>
+          <li>Quick Wins Plan</li><li>Recommendations Report</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="phase-card">
+    <div class="in">
+      <div class="side"><b>Implement &amp; Enable</b><i>Months 2 to 4</i></div>
+      <div class="main">
+        <p class="mm-only">We execute the plan together: process improvements, dashboards and reporting, automation, training, and change management support.</p>
+        <p class="sb-only">We build the improvements with your team: processes, dashboards, automation, and the training to run them yourselves.</p>
+        <ul>
+          <li>Process Improvements</li><li>Dashboards &amp; Reporting</li>
+          <li>Automation</li><li>Training &amp; Knowledge Transfer</li>
+          <li>Change Management Support</li><li>Implementation Documentation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="phase-card">
+    <div class="in">
+      <div class="side"><b>Sustain &amp; Optimize</b><i>Ongoing</i></div>
+      <div class="main">
+        <p class="mm-only">Performance reviews, KPI monitoring, refinement, and continuous improvement so the gains compound as you grow.</p>
+        <p class="sb-only">We make sure the gains stick, and keep refining as your business grows.</p>
+        <ul>
+          <li>Performance Reviews</li><li>KPI Monitoring</li>
+          <li>Continuous Improvement</li><li>Process Refinement</li>
+          <li>Additional Opportunities</li><li>Growth Enablement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="stack-note">Early, measurable wins land within the first 30 to 60 days.</p>
+
+<section class="est" id="estimator">
+  <div class="wrap">
+    <h2 class="rv">What's waiting at the end of the journey?</h2>
+    <p class="lede rv">Tuned to your selection above. Move the sliders to match your reality.</p>
+    <div class="panel rv">
+      <div class="controls">
+        <div class="ctl">
+          <label><span class="mm-only">Hours your finance team spends on reporting each month</span><span class="sb-only">Hours you spend on reports and bookkeeping each month</span> <output id="oRep">60</output></label>
+          <input type="range" id="rRep" min="20" max="300" value="60" step="5">
+          <div class="hintline"><span class="mm-only">Month-end close, management reports, board packs, consolidations.</span><span class="sb-only">Month-end numbers, invoicing follow-ups, chasing spreadsheets.</span></div>
+        </div>
+        <div class="ctl">
+          <label>Hours spent on manual processing each month <output id="oProc">100</output></label>
+          <input type="range" id="rProc" min="20" max="500" value="100" step="10">
+          <div class="hintline"><span class="mm-only">Invoicing, accounts payable, data entry, copying between systems.</span><span class="sb-only">Invoicing, paying bills, data entry, retyping things between tools.</span></div>
+        </div>
+        <div class="ctl">
+          <label>Average loaded cost per hour <output id="oRate">$55</output></label>
+          <input type="range" id="rRate" min="30" max="150" value="55" step="5">
+          <div class="hintline">Salary plus overhead for the people doing this work.</div>
+        </div>
+      </div>
+      <div class="result">
+        <div class="label">Estimated recoverable time</div>
+        <b><span id="hrs">960</span> <span>hours / year</span></b>
+        <div class="sub">that automation could hand back to your team</div>
+        <div class="row2">
+          <div class="label">Estimated annual value</div>
+          <b>$<span id="dollars">52,800</span></b>
+        </div>
+        <div class="go"><a class="btn lt" href="#contact">Book a Discovery Call</a></div>
+      </div>
+    </div>
+    <p class="basis rv">Illustrative estimate assuming a 50% reduction in the hours above, consistent with results Shelly has delivered in past roles (65% faster invoicing, 50% faster AP processing). Your discovery call produces a real number for your business.</p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="card rv">
+      <img src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+      <div class="body">
+        <div class="role">Founder &amp; Principal</div>
+        <h2>Shelly Moffat, EMBA</h2>
+        <p>Executive MBA graduate of Ivey Business School with 15+ years of senior finance and operations leadership. Shelly walks every phase of this journey with you: strategic advice and hands-on execution.</p>
+        <div class="pills">
+          <span>SaaS</span><span>Logistics</span><span>Manufacturing</span><span>Construction</span><span>Retail</span><span>Professional Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <h2>The first conversation is always complimentary.</h2>
+      <p class="swap"><span class="mm-only">Thirty minutes with a senior operator. No obligation, a practical discussion about your organization.</span><span class="sb-only">Thirty minutes, no obligation, no sales pressure. Just a practical chat about your business.</span></p>
+    </div>
+    <div class="actions rv">
+      <a class="btn" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-tight.png" alt="IntiEdge Partners">
+    <div>shelly@intiedge.com &nbsp;|&nbsp; 1-226-678-3324 &nbsp;|&nbsp; London, Ontario, Canada</div>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold: .15});
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  }
+
+  const CALC = {
+    mm: { rep: {min:20, max:300, step:5,  val:60},  proc: {min:20, max:500, step:10, val:100}, rate: {min:30, max:150, step:5, val:55} },
+    sb: { rep: {min:5,  max:80,  step:5,  val:20},  proc: {min:5,  max:150, step:5,  val:30},  rate: {min:25, max:100, step:5, val:40} }
+  };
+  const rRep = document.getElementById('rRep'), rProc = document.getElementById('rProc'), rRate = document.getElementById('rRate');
+  const oRep = document.getElementById('oRep'), oProc = document.getElementById('oProc'), oRate = document.getElementById('oRate');
+  const hrs = document.getElementById('hrs'), dollars = document.getElementById('dollars');
+  function fill(s) { s.style.setProperty('--fill', ((s.value - s.min) / (s.max - s.min) * 100) + '%'); }
+  function recalc() {
+    oRep.textContent = rRep.value;
+    oProc.textContent = rProc.value;
+    oRate.textContent = '$' + rRate.value;
+    [rRep, rProc, rRate].forEach(fill);
+    const savedHours = Math.round((+rRep.value + +rProc.value) * 0.5 * 12);
+    hrs.textContent = savedHours.toLocaleString('en-CA');
+    dollars.textContent = (savedHours * +rRate.value).toLocaleString('en-CA');
+  }
+  function applyCalcPersona(sb) {
+    const p = CALC[sb ? 'sb' : 'mm'];
+    [['rep', rRep], ['proc', rProc], ['rate', rRate]].forEach(([k, s]) => {
+      s.min = p[k].min; s.max = p[k].max; s.step = p[k].step; s.value = p[k].val;
+    });
+    recalc();
+  }
+  [rRep, rProc, rRate].forEach(s => s.addEventListener('input', recalc));
+  recalc();
+
+  const segMM = document.getElementById('segMM'), segSB = document.getElementById('segSB');
+  function setPersona(sb) {
+    document.body.classList.toggle('sb', sb);
+    segSB.classList.toggle('on', sb);
+    segMM.classList.toggle('on', !sb);
+    applyCalcPersona(sb);
+    document.body.classList.remove('switched');
+    void document.body.offsetWidth;
+    document.body.classList.add('switched');
+  }
+  segMM.addEventListener('click', () => setPersona(false));
+  segSB.addEventListener('click', () => setPersona(true));
+</script>
+</body>
+</html>

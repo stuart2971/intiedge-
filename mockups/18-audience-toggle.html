@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 18: Audience Toggle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#4A5A74;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+  h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+  a{text-decoration:none;color:var(--blue)}
+
+  header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .nav img{height:44px}
+  .nav ul{display:flex;gap:32px;list-style:none}
+  .nav ul a{color:var(--navy);font-weight:600;font-size:15px}
+  .nav ul a:hover{color:var(--blue)}
+  .btn{display:inline-block;background:var(--navy);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;padding:14px 30px;transition:background .25s,transform .15s}
+  .btn:hover{background:var(--blue)}
+  .btn:active{transform:translateY(1px)}
+
+  /* persona segmented control */
+  .seg-bar{background:var(--mist);border-bottom:1px solid var(--line);padding:20px 0}
+  .seg-bar .wrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .seg-bar .q{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:14.5px}
+  .seg{display:inline-flex;background:#fff;border:1px solid var(--line);padding:4px;gap:4px}
+  .seg button{font-family:Montserrat,sans-serif;font-weight:700;font-size:13.5px;color:var(--muted);background:none;border:none;cursor:pointer;padding:10px 22px;transition:color .2s,background .25s}
+  .seg button:hover{color:var(--navy)}
+  .seg button.on{background:var(--navy);color:#fff}
+
+  /* persona-driven visibility */
+  .sb-only{display:none}
+  body.sb .sb-only{display:revert}
+  body.sb .mm-only{display:none}
+
+  /* hero */
+  .hero{padding:88px 0}
+  .hero .wrap{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center}
+  .hero h1{font-size:clamp(32px,4.2vw,50px);line-height:1.14;letter-spacing:-.02em;font-weight:800}
+  .hero h1 span{color:var(--blue)}
+  .hero p{margin:22px 0 32px;font-size:18.5px;color:var(--muted);max-width:32em}
+  .hero .photo img{width:100%;height:440px;object-fit:cover;filter:saturate(.3)}
+  .swap{animation:none}
+  @media (prefers-reduced-motion: no-preference){
+    body.switched .swap{animation:swapin .45s cubic-bezier(.16,1,.3,1)}
+    @keyframes swapin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  }
+
+  section{padding:92px 0}
+  h2{font-size:clamp(26px,3.2vw,38px);letter-spacing:-.015em;line-height:1.18}
+  .lede{color:var(--muted);font-size:17px;max-width:60ch;margin-top:12px}
+
+  /* pains: two-column checklist */
+  .pains{background:var(--mist)}
+  .ch-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;margin-top:40px}
+  .ch{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .ch::before{content:"";flex-shrink:0;width:22px;height:22px;margin-top:2px;background:var(--teal);
+    -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="black" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm45.66 85.66l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32Z"/></svg>') center/contain no-repeat;
+    mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="black" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm45.66 85.66l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32Z"/></svg>') center/contain no-repeat}
+
+  /* focus columns */
+  .svcs .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:48px}
+  .svcs h3{font-size:18px;display:flex;align-items:baseline;gap:12px}
+  .svcs h3::before{content:"";width:34px;height:4px;flex-shrink:0;background:var(--blue);transform:translateY(-4px)}
+  .svcs .cols > div:nth-child(2) h3::before{background:var(--teal)}
+  .svcs .cols > div:nth-child(3) h3::before{background:var(--navy)}
+  .svcs p{color:var(--muted);font-size:15px;margin-top:12px}
+
+  /* proof band */
+  .stats{background:var(--navy);padding:52px 0}
+  .stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+  .stat b{display:block;font-family:Montserrat,sans-serif;font-size:40px;font-weight:800;color:#fff;line-height:1.1}
+  .stat b span{color:var(--blue)}
+  .stat i{font-style:normal;font-size:14.5px;color:#B9C7E2;display:block;margin-top:4px}
+
+  /* timeline */
+  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;position:relative}
+  .how-line{position:absolute;top:10px;left:6%;right:6%;height:2px;background:var(--line);overflow:hidden}
+  .how-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+  .how-grid.drawn .how-line i{width:100%}
+  .st{padding:0 22px;position:relative}
+  .st::before{content:"";width:20px;height:20px;border-radius:50%;background:#fff;border:5px solid var(--blue);display:block;margin-bottom:18px;position:relative}
+  .st:nth-child(3)::before{border-color:var(--teal)}
+  .st:nth-child(4)::before{border-color:var(--navy)}
+  .st:nth-child(5)::before{border-color:var(--blue)}
+  .st b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:16.5px;display:block}
+  .st i{font-style:normal;color:var(--teal);font-weight:600;font-size:13px;display:block;margin:3px 0 8px}
+  .st p{font-size:14px;color:var(--muted)}
+
+  /* about */
+  .about{background:var(--mist)}
+  .about .card{display:grid;grid-template-columns:5fr 7fr;background:linear-gradient(135deg,var(--navy) 0%,#0D3A7E 75%,#10518F 130%);color:#fff;overflow:hidden}
+  .about img{width:100%;height:100%;min-height:420px;object-fit:cover;object-position:top}
+  .about .body{padding:56px}
+  .about .role{color:#7FD4E8;font-weight:700;font-family:Montserrat,sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  .about h2{color:#fff;margin:8px 0 0}
+  .about p{color:#CFE0F8;margin-top:16px;max-width:52ch}
+  .about .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .about .pills span{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:600}
+
+  .cta .wrap{display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:center}
+  .cta h2{max-width:17em}
+  .cta p{color:var(--muted);margin-top:12px;max-width:46ch}
+  .cta .actions{justify-self:end}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);padding:52px 0;font-size:14.5px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer img{height:48px}
+  footer a{color:var(--navy);font-weight:600}
+
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width: 920px){
+    .nav ul{display:none}
+    .hero .wrap,.cta .wrap{grid-template-columns:1fr;gap:40px}
+    .ch-grid{grid-template-columns:1fr}
+    .svcs .cols{grid-template-columns:1fr}
+    .stats .wrap{grid-template-columns:1fr}
+    .how-grid{grid-template-columns:1fr;gap:30px}
+    .how-line{display:none}
+    .about .card{grid-template-columns:1fr}
+    .cta .actions{justify-self:start}
+    .hero .photo img{height:320px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <ul>
+      <li><a href="#pains">Challenges</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#about">About Shelly</a></li>
+    </ul>
+    <a class="btn" href="#contact">Book a Discovery Call</a>
+  </div>
+</header>
+
+<div class="seg-bar">
+  <div class="wrap">
+    <span class="q">Which sounds more like you?</span>
+    <div class="seg" role="group" aria-label="Choose your business type">
+      <button id="segMM" class="on">I lead a mid-market organization</button>
+      <button id="segSB">I run a growing small business</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="swap">
+      <div class="mm-only">
+        <h1>Profitability, governance, and <span>scalable systems</span> for growing organizations.</h1>
+        <p>Finance leadership, operational excellence, and AI-enabled transformation for CEOs, CFOs, boards, and owners.</p>
+      </div>
+      <div class="sb-only">
+        <h1>Feeling like your business has become <span>harder to manage</span> as it grows?</h1>
+        <p>IntiEdge helps business owners gain clarity, improve efficiency, and make better decisions. Practical help, not just advice.</p>
+      </div>
+      <a class="btn" href="#contact">Book a Discovery Call</a>
+    </div>
+    <div class="photo rv">
+      <img class="mm-only" src="https://picsum.photos/id/430/880/860" alt="City skyline">
+      <img class="sb-only" src="https://picsum.photos/id/2/880/860" alt="Small business workspace">
+    </div>
+  </div>
+</section>
+
+<section class="pains" id="pains">
+  <div class="wrap">
+    <div class="swap">
+      <h2 class="mm-only">Is your organization facing these challenges?</h2>
+      <h2 class="sb-only">Do any of these sound familiar?</h2>
+    </div>
+    <div class="ch-grid swap">
+      <div class="ch mm-only">Limited visibility into performance and profitability</div>
+      <div class="ch mm-only">Growth outpacing systems and controls</div>
+      <div class="ch mm-only">Technology investments not delivering expected value</div>
+      <div class="ch mm-only">Inefficient processes and manual workflows</div>
+      <div class="ch mm-only">Leadership gaps and resource constraints</div>
+      <div class="ch mm-only">Reports arriving too late to act on</div>
+      <div class="ch sb-only">I don't always know which customers or services are most profitable</div>
+      <div class="ch sb-only">Reports take too long to prepare</div>
+      <div class="ch sb-only">My team spends too much time on manual tasks and spreadsheets</div>
+      <div class="ch sb-only">We're growing, but things feel disorganized</div>
+      <div class="ch sb-only">We know improvements are needed, but don't know where to start</div>
+      <div class="ch sb-only">I need experienced support without hiring another executive</div>
+    </div>
+  </div>
+</section>
+
+<section class="svcs" id="services">
+  <div class="wrap">
+    <h2 class="rv">Where we focus</h2>
+    <div class="cols">
+      <div class="rv">
+        <h3>Finance Leadership</h3>
+        <p class="mm-only">Fractional CFO and interim controller leadership: reporting and analysis, budgeting and forecasting, cash flow, KPI development, and governance support.</p>
+        <p class="sb-only">An experienced finance leader in your corner: clear monthly numbers, cash flow you can trust, and budgets that actually guide decisions.</p>
+      </div>
+      <div class="rv">
+        <h3>Operations &amp; Process</h3>
+        <p class="mm-only">Process mapping and optimization, workflow redesign, organizational effectiveness, performance management, and the discipline to scale cleanly.</p>
+        <p class="sb-only">Less chaos, fewer spreadsheets. We untangle how work gets done and rebuild it so growth feels like progress again.</p>
+      </div>
+      <div class="rv">
+        <h3>Technology &amp; AI</h3>
+        <p class="mm-only">AI readiness, reporting automation, dashboard development, ERP and systems optimization, and practical adoption strategies that pay for themselves.</p>
+        <p class="sb-only">Practical automation that gives your team hours back every week. No jargon, no replacing people, just less busywork.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat rv"><b>65<span>%</span></b><i>faster invoicing cycle through automation Shelly led</i></div>
+    <div class="stat rv"><b>10</b><i>operating companies unified under one reporting framework</i></div>
+    <div class="stat rv"><b>30-60</b><i>days to first measurable wins in a typical engagement</i></div>
+  </div>
+</div>
+
+<section id="approach">
+  <div class="wrap">
+    <h2 class="rv">How we get there</h2>
+    <div class="how-grid" id="howGrid">
+      <div class="how-line"><i></i></div>
+      <div class="st rv"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Interviews, current state assessment, process mapping, and opportunity identification.</p></div>
+      <div class="st rv"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state, roadmap, KPI framework, and a quick wins plan.</p></div>
+      <div class="st rv"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Improvements, dashboards, automation, training, and change support.</p></div>
+      <div class="st rv"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Performance reviews, KPI monitoring, and continuous refinement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="card rv">
+      <img src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+      <div class="body">
+        <div class="role">Founder &amp; Principal</div>
+        <h2>Shelly Moffat, EMBA</h2>
+        <p>Executive MBA graduate of Ivey Business School with 15+ years of senior finance and operations leadership, from family-owned businesses to multi-entity groups. Strategic advice with hands-on execution, whichever side of the toggle you're on.</p>
+        <div class="pills">
+          <span>SaaS</span><span>Logistics</span><span>Manufacturing</span><span>Construction</span><span>Retail</span><span>Professional Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <h2>The first conversation is always complimentary.</h2>
+      <p class="swap"><span class="mm-only">Thirty minutes with a senior operator. No obligation, a practical discussion about your organization.</span><span class="sb-only">Thirty minutes, no obligation, no sales pressure. Just a practical chat about your business.</span></p>
+    </div>
+    <div class="actions rv">
+      <a class="btn" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-tight.png" alt="IntiEdge Partners">
+    <div>shelly@intiedge.com &nbsp;|&nbsp; 1-226-678-3324 &nbsp;|&nbsp; London, Ontario, Canada</div>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold: .15});
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  }
+
+  // persona toggle
+  const segMM = document.getElementById('segMM'), segSB = document.getElementById('segSB');
+  function setPersona(sb) {
+    document.body.classList.toggle('sb', sb);
+    segSB.classList.toggle('on', sb);
+    segMM.classList.toggle('on', !sb);
+    document.body.classList.remove('switched');
+    void document.body.offsetWidth;
+    document.body.classList.add('switched');
+  }
+  segMM.addEventListener('click', () => setPersona(false));
+  segSB.addEventListener('click', () => setPersona(true));
+
+  // timeline draw
+  const grid = document.getElementById('howGrid');
+  if (reduce) { grid.classList.add('drawn'); }
+  else {
+    const tio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { grid.classList.add('drawn'); tio.unobserve(grid); }
+    }), {threshold: .4});
+    tio.observe(grid);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Finance, Operations &amp; AI Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<script>try{if(localStorage.getItem('iePersona')==='sb')document.body.classList.add('sb')}catch(e){}</script>
+
+<div class="layout">
+  <aside>
+    <a class="logo" href="index.html"><img class="logo-mark" src="assets/logo-mark.png" alt=""><img class="logo-word" src="assets/logo-word.png" alt="IntiEdge Partners"></a>
+    <nav>
+      <a href="index.html" class="on">Home</a>
+      <a href="services.html">Services</a>
+      <a href="approach.html">Approach</a>
+      <a href="about.html">About Shelly</a>
+      <a href="why-intiedge.html">Why IntiEdge</a>
+      <a href="ai.html">AI Enablement</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="foot">
+      <a class="btn" href="contact.html">Book a Discovery Call</a>
+    </div>
+    <svg class="aside-wave" viewBox="0 0 48 800" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="ieWave" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#118DA3"/>
+          <stop offset="1" stop-color="#148EEA"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 0 L0 800 L14 800 C 30 560 32 240 16 0 Z" fill="#0B2A63"/>
+      <path d="M22 -8 C 38 240 36 560 20 808" fill="none" stroke="url(#ieWave)" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+    </svg>
+  </aside>
+
+  <main>
+    <div class="block hero hero-home" id="top">
+      <div class="persona-top">
+        <span class="q">Which sounds more like you?</span>
+        <div class="seg" role="group" aria-label="Choose your business type">
+          <button id="segMM" class="on">Mid-market</button>
+          <button id="segSB">Small business</button>
+        </div>
+      </div>
+      <div class="hero-center">
+        <div class="swap">
+          <div class="mm-only">
+            <h1>A structured path to <span>profitable, governed growth</span>.</h1>
+            <p>Finance leadership, operational excellence, and AI-enabled transformation for CEOs, CFOs, boards, and owners. Read this page like the plan it is.</p>
+          </div>
+          <div class="sb-only">
+            <h1>Your business, <span>back under control</span>.</h1>
+            <p>Clarity, efficiency, and better decisions for owners whose business has outgrown the spreadsheets. Read this page like the plan it is.</p>
+          </div>
+          <a class="btn" href="contact.html">Book a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="block band-block">
+      <div class="band rv"><img src="https://picsum.photos/id/238/1600/540" alt="City skyline in black and white"></div>
+    </div>
+
+    <div class="block" id="estimator">
+      <h2 class="rv">Your numbers</h2>
+      <p class="lede rv">Tuned to the selection in the sidebar. Move the sliders to match your reality.</p>
+      <div class="est-panel rv">
+        <div class="controls">
+          <div class="ctl">
+            <label><span class="mm-only">Hours your finance team spends on reporting each month</span><span class="sb-only">Hours you spend on reports and bookkeeping each month</span> <output id="oRep">60</output></label>
+            <input type="range" id="rRep" min="20" max="300" value="60" step="5">
+            <div class="hintline"><span class="mm-only">Month-end close, management reports, board packs, consolidations.</span><span class="sb-only">Month-end numbers, invoicing follow-ups, chasing spreadsheets.</span></div>
+          </div>
+          <div class="ctl">
+            <label>Hours spent on manual processing each month <output id="oProc">100</output></label>
+            <input type="range" id="rProc" min="20" max="500" value="100" step="10">
+            <div class="hintline"><span class="mm-only">Invoicing, accounts payable, data entry, copying between systems.</span><span class="sb-only">Invoicing, paying bills, data entry, retyping things between tools.</span></div>
+          </div>
+          <div class="ctl">
+            <label>Average loaded cost per hour <output id="oRate">$55</output></label>
+            <input type="range" id="rRate" min="30" max="150" value="55" step="5">
+            <div class="hintline">Salary plus overhead for the people doing this work.</div>
+          </div>
+        </div>
+        <div class="result">
+          <div class="label">Estimated recoverable time</div>
+          <b><span id="hrs">960</span> <span>hours / year</span></b>
+          <div class="sub">that automation could hand back to your team</div>
+          <div class="row2">
+            <div class="label">Estimated annual value</div>
+            <b>$<span id="dollars">52,800</span></b>
+          </div>
+          <div class="go"><a class="btn lt" href="contact.html">Book a Discovery Call</a></div>
+        </div>
+      </div>
+      <p class="basis rv">Illustrative estimate assuming a 50% reduction in the hours above, consistent with results Shelly has delivered in past roles (65% faster invoicing, 50% faster AP processing). Your discovery call produces a real number for your business.</p>
+    </div>
+
+    <div class="block" id="about">
+      <h2 class="rv">About Shelly</h2>
+      <div class="about-card rv">
+        <img src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+        <div class="body">
+          <div class="role">Founder &amp; Principal</div>
+          <h2>Shelly Moffat, EMBA</h2>
+          <p>Executive MBA graduate of Ivey Business School with 15+ years of senior finance and operations leadership, from family-owned businesses to multi-entity groups. Strategic advice with hands-on execution, true to the <span class="brand"><span class="i">Inti</span><span class="e">Edge</span></span> name: inti means core.</p>
+          <div class="pills">
+            <span>SaaS</span><span>Logistics</span><span>Manufacturing</span><span>Construction</span><span>Retail</span><span>Professional Services</span>
+          </div>
+          <a class="btn lt" href="about.html">More About Shelly</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="block" id="challenges">
+      <div class="swap">
+        <h2 class="mm-only">The challenges we're hired for</h2>
+        <h2 class="sb-only">Do any of these sound familiar?</h2>
+        <p class="lede"><span class="mm-only">Six patterns we see in growing organizations. Open one to see how <span class="brand"><span class="i">Inti</span><span class="e">Edge</span></span> responds.</span><span class="sb-only">If you've said any of these out loud this month, you're who we built this for. Open one to see our answer.</span></p>
+      </div>
+      <div class="acc swap">
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Limited visibility into performance and profitability</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How <span class="brand"><span class="i">Inti</span><span class="e">Edge</span></span> responds</b><p>KPI frameworks and live dashboards built on your real data, like the unified Power BI reporting Shelly designed across a ten-company group.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Financial reports take too long to prepare</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How <span class="brand"><span class="i">Inti</span><span class="e">Edge</span></span> responds</b><p>We automate the reporting pipeline. Shelly cut an invoicing cycle by 65% and AP processing by 50%, freeing the team for analysis instead of assembly.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Growth is outpacing systems and controls</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How <span class="brand"><span class="i">Inti</span><span class="e">Edge</span></span> responds</b><p>Scalable processes, governance, and internal controls designed for the size you're becoming, not the size you were.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Technology investments aren't delivering expected value</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How <span class="brand"><span class="i">Inti</span><span class="e">Edge</span></span> responds</b><p>ERP and systems optimization plus practical AI adoption, prioritized by payback and implemented rather than just recommended.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Leadership gaps and resource constraints</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How <span class="brand"><span class="i">Inti</span><span class="e">Edge</span></span> responds</b><p>Fractional CFO and interim controller engagements: senior capability at part-time cost, with a clean handover when you're ready to hire.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Inefficient processes and manual workflows</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How <span class="brand"><span class="i">Inti</span><span class="e">Edge</span></span> responds</b><p>Process mapping and workflow redesign that hands hours back to your team every month, measured and reported.</p></div></div></div>
+        </div>
+
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"I don't know which customers actually make me money."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>Simple margin reporting that shows where the profit really comes from, so your pricing and your effort follow the money.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"Reports take forever, and they're stale by the time they're done."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>Month-end automated down from days to hours. The numbers arrive while they still matter.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"My team spends half the week on spreadsheets."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>We automate the busywork: invoicing, bill payments, data entry, and the endless retyping between tools.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"We're growing, but everything feels more chaotic."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>Clear processes and simple systems that make the next hire easier instead of harder. Growth should feel like progress.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"I know things need to improve. I just don't know where to start."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>A short assessment finds the two or three changes with the biggest payoff, and we start there. Early wins inside 60 days.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"I need senior help, but I can't justify an executive salary."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>A senior finance leader in your corner for a few hours a week, not a six-figure hire. Scale up or down as you need.</p></div></div></div>
+        </div>
+      </div>
+      <p class="ch-hint swap"><span class="mm-only">Recognize two or more? That's exactly when a discovery call is worth 30 minutes.</span><span class="sb-only">Nodding at even one of these? That's worth a 30-minute conversation.</span></p>
+    </div>
+
+    <div class="block" id="services">
+      <h2 class="rv">Where we focus</h2>
+      <div class="cols">
+        <div class="rv">
+          <h3>Finance Leadership</h3>
+          <p class="mm-only">Fractional CFO and interim controller leadership: reporting and analysis, budgeting and forecasting, cash flow, KPI development, and governance support.</p>
+          <p class="sb-only">An experienced finance leader in your corner: clear monthly numbers, cash flow you can trust, and budgets that actually guide decisions.</p>
+        </div>
+        <div class="rv">
+          <h3>Operations &amp; Process</h3>
+          <p class="mm-only">Process mapping and optimization, workflow redesign, organizational effectiveness, performance management, and the discipline to scale cleanly.</p>
+          <p class="sb-only">Less chaos, fewer spreadsheets. We untangle how work gets done and rebuild it so growth feels like progress again.</p>
+        </div>
+        <div class="rv">
+          <h3>Technology &amp; AI</h3>
+          <p class="mm-only">AI readiness, reporting automation, dashboard development, ERP and systems optimization, and practical adoption strategies that pay for themselves.</p>
+          <p class="sb-only">Practical automation that gives your team hours back every week. No jargon, no replacing people, just less busywork.</p>
+        </div>
+      </div>
+      <a class="more rv" href="services.html">See the full service list</a>
+    </div>
+
+    <div class="block" id="approach">
+      <h2 class="rv">How we get there</h2>
+      <div class="how-grid" id="howGrid">
+        <div class="how-line"><i></i></div>
+        <div class="st rv"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Interviews, current state assessment, process mapping, and opportunity identification.</p></div>
+        <div class="st rv"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state, roadmap, KPI framework, and a quick wins plan.</p></div>
+        <div class="st rv"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Improvements, dashboards, automation, training, and change support.</p></div>
+        <div class="st rv"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Performance reviews, KPI monitoring, and continuous refinement.</p></div>
+      </div>
+      <a class="more rv" href="approach.html">See how an engagement runs</a>
+    </div>
+
+    <div class="block" id="contact">
+      <div class="cta-block">
+        <div class="rv">
+          <h2>The first conversation is always complimentary.</h2>
+          <p class="swap"><span class="mm-only">Thirty minutes with a senior operator. No obligation, a practical discussion about your organization.</span><span class="sb-only">Thirty minutes, no obligation, no sales pressure. Just a practical chat about your business.</span></p>
+        </div>
+        <div class="actions rv">
+          <a class="btn" href="contact.html">Book a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <span>shelly@intiedge.com &nbsp;|&nbsp; 1-226-678-3324 &nbsp;|&nbsp; London, Ontario, Canada</span>
+      <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+    </div>
+  </main>
+</div>
+
+<script src="site.js"></script>
+</body>
+</html>

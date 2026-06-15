@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 22: Two Doors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#44546E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px}
+  h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  a{text-decoration:none;color:var(--blue)}
+
+  header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .nav img{height:46px}
+  .nav .mini-seg{display:none;background:var(--mist);border:1px solid var(--line);padding:4px;gap:4px}
+  body.chosen .nav .mini-seg{display:inline-flex}
+  .nav .mini-seg button{font-family:Montserrat,sans-serif;font-weight:700;font-size:14.5px;color:var(--muted);background:none;border:none;cursor:pointer;padding:10px 18px;transition:color .2s,background .25s}
+  .nav .mini-seg button.on{background:var(--navy);color:#fff}
+  .btn{display:inline-block;background:var(--navy);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:15.5px;padding:16px 34px;transition:background .25s,transform .15s}
+  .btn:hover{background:var(--blue)}
+  .btn:active{transform:translateY(1px)}
+  .btn.lt{background:#fff;color:var(--navy)}
+  .btn.lt:hover{background:var(--mist)}
+
+  /* persona visibility */
+  .sb-only{display:none}
+  body.sb .sb-only{display:revert}
+  body.sb .mm-only{display:none}
+  @media (prefers-reduced-motion: no-preference){
+    body.switched .swap{animation:swapin .45s cubic-bezier(.16,1,.3,1)}
+    @keyframes swapin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  }
+
+  /* the two doors */
+  .doors{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100dvh - 76px)}
+  .door{position:relative;display:flex;align-items:flex-end;padding:64px 56px;cursor:pointer;overflow:hidden;border:none;text-align:left;background:none}
+  .door .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+  .door:hover .bg{transform:scale(1.04)}
+  @media (prefers-reduced-motion: reduce){.door:hover .bg{transform:none}}
+  .door.mm .bg{background-image:linear-gradient(rgba(8,26,60,.82),rgba(8,26,60,.82)),url('https://picsum.photos/id/430/1100/1100')}
+  .door.sb .bg{background-image:linear-gradient(rgba(245,247,250,.88),rgba(245,247,250,.88)),url('https://picsum.photos/id/2/1100/1100')}
+  .door .inner{position:relative;max-width:30em}
+  .door .kicker{font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+  .door.mm .kicker{color:#7FD4E8}
+  .door.sb .kicker{color:var(--teal)}
+  .door h2{font-size:clamp(28px,3vw,42px);line-height:1.15;letter-spacing:-.015em}
+  .door.mm h2{color:#fff}
+  .door p{margin-top:14px;font-size:18px;line-height:1.6}
+  .door.mm p{color:#C7D5F2}
+  .door.sb p{color:var(--muted)}
+  .door .pick{display:inline-block;margin-top:26px;font-family:Montserrat,sans-serif;font-weight:700;font-size:16.5px;padding:15px 30px;transition:background .25s,color .25s}
+  .door.mm .pick{background:#fff;color:var(--navy)}
+  .door.mm:hover .pick{background:var(--blue);color:#fff}
+  .door.sb .pick{background:var(--navy);color:#fff}
+  .door.sb:hover .pick{background:var(--blue)}
+
+  /* main content (revealed after choice, but visible by default scrolled) */
+  section{padding:96px 0}
+  h2.sect{font-size:clamp(28px,3.2vw,40px);letter-spacing:-.015em;line-height:1.18;color:var(--navy)}
+  .lede{color:var(--muted);font-size:18.5px;max-width:58ch;margin-top:14px}
+
+  /* adaptive intro + pains */
+  .pains .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;margin-top:44px}
+  .ch{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);font-size:17.5px}
+  .ch::before{content:"";flex-shrink:0;width:24px;height:24px;margin-top:2px;background:var(--teal);
+    -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="black" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm45.66 85.66l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32Z"/></svg>') center/contain no-repeat;
+    mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="black" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm45.66 85.66l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32Z"/></svg>') center/contain no-repeat}
+
+  /* calculator */
+  .est{background:var(--mist)}
+  .est .panel{margin-top:52px;display:grid;grid-template-columns:7fr 5fr;border:1px solid var(--line);background:#fff;box-shadow:0 24px 60px rgba(11,42,99,.10)}
+  .est .controls{padding:52px 56px}
+  .ctl{margin-bottom:42px}
+  .ctl:last-child{margin-bottom:0}
+  .ctl label{display:flex;justify-content:space-between;align-items:baseline;gap:20px;font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:17.5px;margin-bottom:16px}
+  .ctl label output{color:var(--blue);font-size:24px;font-variant-numeric:tabular-nums;flex-shrink:0}
+  input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:7px;border-radius:4px;background:linear-gradient(90deg,var(--blue) var(--fill,50%),var(--line) var(--fill,50%));outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--blue);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--blue);cursor:pointer}
+  .ctl .hintline{font-size:16px;color:var(--muted);margin-top:12px}
+  .est .result{background:var(--navy);color:#fff;padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+  .est .result .label{font-family:Montserrat,sans-serif;font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:#7FD4E8}
+  .est .result b{font-family:Montserrat,sans-serif;font-size:clamp(44px,4.6vw,62px);font-weight:800;line-height:1.08;display:block;margin-top:12px;font-variant-numeric:tabular-nums}
+  .est .result b span{color:var(--blue)}
+  .est .result .sub{color:#C7D5F2;font-size:17px;margin-top:10px}
+  .est .result .row2{margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.2)}
+  .est .result .row2 b{font-size:clamp(32px,3vw,42px);margin-top:8px}
+  .est .result .go{margin-top:34px}
+  .est .basis{font-size:16px;color:var(--muted);margin-top:24px;max-width:74ch}
+
+  /* dash columns */
+  .svcs .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:52px;margin-top:52px}
+  .svcs h3{font-size:21px;display:flex;align-items:baseline;gap:14px}
+  .svcs h3::before{content:"";width:38px;height:5px;flex-shrink:0;background:var(--blue);transform:translateY(-5px)}
+  .svcs .cols > div:nth-child(2) h3::before{background:var(--teal)}
+  .svcs .cols > div:nth-child(3) h3::before{background:var(--navy)}
+  .svcs p{color:var(--muted);font-size:17px;margin-top:14px}
+
+  /* timeline */
+  .how{background:var(--mist)}
+  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:60px;position:relative}
+  .how-line{position:absolute;top:11px;left:6%;right:6%;height:2px;background:var(--line);overflow:hidden}
+  .how-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+  .how-grid.drawn .how-line i{width:100%}
+  .st{padding:0 24px;position:relative}
+  .st::before{content:"";width:22px;height:22px;border-radius:50%;background:#fff;border:5px solid var(--blue);display:block;margin-bottom:20px;position:relative}
+  .st:nth-child(3)::before{border-color:var(--teal)}
+  .st:nth-child(4)::before{border-color:var(--navy)}
+  .st:nth-child(5)::before{border-color:var(--blue)}
+  .st b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:19px;display:block}
+  .st i{font-style:normal;color:var(--teal);font-weight:600;font-size:16px;display:block;margin:4px 0 10px}
+  .st p{font-size:16px;color:var(--muted)}
+
+  /* about navy panel */
+  .about .card{display:grid;grid-template-columns:5fr 7fr;background:linear-gradient(135deg,var(--navy) 0%,#0D3A7E 75%,#10518F 130%);color:#fff;overflow:hidden;box-shadow:0 24px 60px rgba(11,42,99,.18)}
+  .about img{width:100%;height:100%;min-height:460px;object-fit:cover;object-position:top}
+  .about .body{padding:60px}
+  .about .role{color:#7FD4E8;font-weight:700;font-family:Montserrat,sans-serif;font-size:15px;letter-spacing:.12em;text-transform:uppercase}
+  .about h2{color:#fff;margin:10px 0 0;font-size:clamp(28px,3vw,38px)}
+  .about p{color:#D6E4FA;margin-top:18px;max-width:52ch;font-size:17.5px}
+  .about .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .about .pills span{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:9px 19px;font-size:15px;font-weight:600}
+
+  /* split CTA */
+  .cta .wrap{display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:center}
+  .cta h2.sect{max-width:17em}
+  .cta p{color:var(--muted);margin-top:14px;max-width:46ch;font-size:18px}
+  .cta .actions{justify-self:end}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);padding:54px 0;font-size:16px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer img{height:50px}
+  footer a{color:var(--navy);font-weight:600}
+
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width: 980px){
+    .doors{grid-template-columns:1fr;min-height:0}
+    .door{min-height:46vh;padding:40px 28px}
+    .pains .grid2{grid-template-columns:1fr}
+    .est .panel{grid-template-columns:1fr}
+    .est .controls{padding:36px 28px}
+    .svcs .cols{grid-template-columns:1fr}
+    .how-grid{grid-template-columns:1fr;gap:32px}
+    .how-line{display:none}
+    .about .card{grid-template-columns:1fr}
+    .cta .wrap{grid-template-columns:1fr;gap:36px}
+    .cta .actions{justify-self:start}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <div class="mini-seg" role="group" aria-label="Switch business type">
+      <button id="segMM" class="on">Mid-market</button>
+      <button id="segSB">Small business</button>
+    </div>
+    <a class="btn" href="#contact">Book a Discovery Call</a>
+  </div>
+</header>
+
+<div class="doors" id="top">
+  <button class="door mm" id="doorMM">
+    <span class="bg"></span>
+    <span class="inner">
+      <span class="kicker">For leadership teams</span>
+      <h2>I lead a mid-market organization</h2>
+      <p>Boards, CFOs, owners, and executives who need stronger visibility, governance, and scalable systems.</p>
+      <span class="pick">This is me</span>
+    </span>
+  </button>
+  <button class="door sb" id="doorSB">
+    <span class="bg"></span>
+    <span class="inner">
+      <span class="kicker">For owner-operators</span>
+      <h2>I run a growing small business</h2>
+      <p>Owners whose business has grown past the spreadsheets, and who want clarity without hiring an executive.</p>
+      <span class="pick">This is me</span>
+    </span>
+  </button>
+</div>
+
+<section class="pains" id="story">
+  <div class="wrap">
+    <div class="swap">
+      <h2 class="sect mm-only">Is your organization facing these challenges?</h2>
+      <h2 class="sect sb-only">Do any of these sound familiar?</h2>
+    </div>
+    <div class="grid2 swap">
+      <div class="ch mm-only">Limited visibility into performance and profitability</div>
+      <div class="ch mm-only">Growth outpacing systems and controls</div>
+      <div class="ch mm-only">Technology investments not delivering expected value</div>
+      <div class="ch mm-only">Inefficient processes and manual workflows</div>
+      <div class="ch mm-only">Leadership gaps and resource constraints</div>
+      <div class="ch mm-only">Reports arriving too late to act on</div>
+      <div class="ch sb-only">I don't always know which customers or services are most profitable</div>
+      <div class="ch sb-only">Reports take too long to prepare</div>
+      <div class="ch sb-only">My team spends too much time on manual tasks and spreadsheets</div>
+      <div class="ch sb-only">We're growing, but things feel disorganized</div>
+      <div class="ch sb-only">We know improvements are needed, but don't know where to start</div>
+      <div class="ch sb-only">I need experienced support without hiring another executive</div>
+    </div>
+  </div>
+</section>
+
+<section class="est" id="estimator">
+  <div class="wrap">
+    <h2 class="sect rv">What's the manual work costing you?</h2>
+    <p class="lede rv">The sliders are already tuned to the door you chose. Adjust to match your reality.</p>
+    <div class="panel rv">
+      <div class="controls">
+        <div class="ctl">
+          <label><span class="mm-only">Hours your finance team spends on reporting each month</span><span class="sb-only">Hours you spend on reports and bookkeeping each month</span> <output id="oRep">60</output></label>
+          <input type="range" id="rRep" min="20" max="300" value="60" step="5">
+          <div class="hintline"><span class="mm-only">Month-end close, management reports, board packs, consolidations.</span><span class="sb-only">Month-end numbers, invoicing follow-ups, chasing spreadsheets.</span></div>
+        </div>
+        <div class="ctl">
+          <label>Hours spent on manual processing each month <output id="oProc">100</output></label>
+          <input type="range" id="rProc" min="20" max="500" value="100" step="10">
+          <div class="hintline"><span class="mm-only">Invoicing, accounts payable, data entry, copying between systems.</span><span class="sb-only">Invoicing, paying bills, data entry, retyping things between tools.</span></div>
+        </div>
+        <div class="ctl">
+          <label>Average loaded cost per hour <output id="oRate">$55</output></label>
+          <input type="range" id="rRate" min="30" max="150" value="55" step="5">
+          <div class="hintline">Salary plus overhead for the people doing this work.</div>
+        </div>
+      </div>
+      <div class="result">
+        <div class="label">Estimated recoverable time</div>
+        <b><span id="hrs">960</span> <span>hours / year</span></b>
+        <div class="sub">that automation could hand back to your team</div>
+        <div class="row2">
+          <div class="label">Estimated annual value</div>
+          <b>$<span id="dollars">52,800</span></b>
+        </div>
+        <div class="go"><a class="btn lt" href="#contact">Book a Discovery Call</a></div>
+      </div>
+    </div>
+    <p class="basis rv">Illustrative estimate assuming a 50% reduction in the hours above, consistent with results Shelly has delivered in past roles (65% faster invoicing, 50% faster AP processing). Your discovery call produces a real number for your business.</p>
+  </div>
+</section>
+
+<section class="svcs" id="services">
+  <div class="wrap">
+    <h2 class="sect rv">Where we focus</h2>
+    <div class="cols">
+      <div class="rv">
+        <h3>Finance Leadership</h3>
+        <p class="mm-only">Fractional CFO and interim controller leadership: reporting and analysis, budgeting and forecasting, cash flow, KPI development, and governance support.</p>
+        <p class="sb-only">An experienced finance leader in your corner: clear monthly numbers, cash flow you can trust, and budgets that actually guide decisions.</p>
+      </div>
+      <div class="rv">
+        <h3>Operations &amp; Process</h3>
+        <p class="mm-only">Process mapping and optimization, workflow redesign, organizational effectiveness, performance management, and the discipline to scale cleanly.</p>
+        <p class="sb-only">Less chaos, fewer spreadsheets. We untangle how work gets done and rebuild it so growth feels like progress again.</p>
+      </div>
+      <div class="rv">
+        <h3>Technology &amp; AI</h3>
+        <p class="mm-only">AI readiness, reporting automation, dashboard development, ERP and systems optimization, and practical adoption strategies that pay for themselves.</p>
+        <p class="sb-only">Practical automation that gives your team hours back every week. No jargon, no replacing people, just less busywork.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="approach">
+  <div class="wrap">
+    <h2 class="sect rv">How we get there</h2>
+    <div class="how-grid" id="howGrid">
+      <div class="how-line"><i></i></div>
+      <div class="st rv"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Interviews, current state assessment, process mapping, and opportunity identification.</p></div>
+      <div class="st rv"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state, roadmap, KPI framework, and a quick wins plan.</p></div>
+      <div class="st rv"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Improvements, dashboards, automation, training, and change support.</p></div>
+      <div class="st rv"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Performance reviews, KPI monitoring, and continuous refinement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="card rv">
+      <img src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+      <div class="body">
+        <div class="role">Founder &amp; Principal</div>
+        <h2>Shelly Moffat, EMBA</h2>
+        <p>Executive MBA graduate of Ivey Business School with 15+ years of senior finance and operations leadership, from family-owned businesses to multi-entity groups. Whichever door you came through, the work is the same: strategic advice with hands-on execution.</p>
+        <div class="pills">
+          <span>SaaS</span><span>Logistics</span><span>Manufacturing</span><span>Construction</span><span>Retail</span><span>Professional Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <h2 class="sect">The first conversation is always complimentary.</h2>
+      <p class="swap"><span class="mm-only">Thirty minutes with a senior operator. No obligation, a practical discussion about your organization.</span><span class="sb-only">Thirty minutes, no obligation, no sales pressure. Just a practical chat about your business.</span></p>
+    </div>
+    <div class="actions rv">
+      <a class="btn" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-tight.png" alt="IntiEdge Partners">
+    <div>shelly@intiedge.com &nbsp;|&nbsp; 1-226-678-3324 &nbsp;|&nbsp; London, Ontario, Canada</div>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold: .15});
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  }
+
+  // adaptive calculator
+  const CALC = {
+    mm: { rep: {min:20, max:300, step:5,  val:60},  proc: {min:20, max:500, step:10, val:100}, rate: {min:30, max:150, step:5, val:55} },
+    sb: { rep: {min:5,  max:80,  step:5,  val:20},  proc: {min:5,  max:150, step:5,  val:30},  rate: {min:25, max:100, step:5, val:40} }
+  };
+  const rRep = document.getElementById('rRep'), rProc = document.getElementById('rProc'), rRate = document.getElementById('rRate');
+  const oRep = document.getElementById('oRep'), oProc = document.getElementById('oProc'), oRate = document.getElementById('oRate');
+  const hrs = document.getElementById('hrs'), dollars = document.getElementById('dollars');
+  function fill(s) { s.style.setProperty('--fill', ((s.value - s.min) / (s.max - s.min) * 100) + '%'); }
+  function recalc() {
+    oRep.textContent = rRep.value;
+    oProc.textContent = rProc.value;
+    oRate.textContent = '$' + rRate.value;
+    [rRep, rProc, rRate].forEach(fill);
+    const savedHours = Math.round((+rRep.value + +rProc.value) * 0.5 * 12);
+    hrs.textContent = savedHours.toLocaleString('en-CA');
+    dollars.textContent = (savedHours * +rRate.value).toLocaleString('en-CA');
+  }
+  function applyCalcPersona(sb) {
+    const p = CALC[sb ? 'sb' : 'mm'];
+    [['rep', rRep], ['proc', rProc], ['rate', rRate]].forEach(([k, s]) => {
+      s.min = p[k].min; s.max = p[k].max; s.step = p[k].step; s.value = p[k].val;
+    });
+    recalc();
+  }
+  [rRep, rProc, rRate].forEach(s => s.addEventListener('input', recalc));
+  recalc();
+
+  // persona: doors + mini segmented control in nav
+  const segMM = document.getElementById('segMM'), segSB = document.getElementById('segSB');
+  function setPersona(sb, scroll) {
+    document.body.classList.toggle('sb', sb);
+    document.body.classList.add('chosen');
+    segSB.classList.toggle('on', sb);
+    segMM.classList.toggle('on', !sb);
+    applyCalcPersona(sb);
+    document.body.classList.remove('switched');
+    void document.body.offsetWidth;
+    document.body.classList.add('switched');
+    if (scroll) document.getElementById('story').scrollIntoView({behavior: reduce ? 'instant' : 'smooth'});
+  }
+  document.getElementById('doorMM').addEventListener('click', () => setPersona(false, true));
+  document.getElementById('doorSB').addEventListener('click', () => setPersona(true, true));
+  segMM.addEventListener('click', () => setPersona(false, false));
+  segSB.addEventListener('click', () => setPersona(true, false));
+
+  // timeline draw
+  const grid = document.getElementById('howGrid');
+  if (reduce) { grid.classList.add('drawn'); }
+  else {
+    const tio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { grid.classList.add('drawn'); tio.unobserve(grid); }
+    }), {threshold: .4});
+    tio.observe(grid);
+  }
+</script>
+</body>
+</html>

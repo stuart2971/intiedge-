@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 10: Minimal Swiss</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#5A6B85;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.7}
+  h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy);font-weight:600}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+  a{text-decoration:none;color:var(--blue)}
+
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .nav img{height:40px}
+  .nav ul{display:flex;gap:36px;list-style:none}
+  .nav ul a{color:var(--ink);font-weight:600;font-size:14.5px}
+  .nav ul a:hover{color:var(--blue)}
+  .btn{display:inline-block;color:var(--navy);font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;padding:13px 28px;border:1.5px solid var(--navy);transition:all .25s}
+  .btn:hover{background:var(--navy);color:#fff}
+  .btn.solid{background:var(--navy);color:#fff}
+  .btn.solid:hover{background:var(--blue);border-color:var(--blue)}
+
+  /* hero: quiet, typographic, left aligned with generous space */
+  .hero{padding:130px 0 110px}
+  .hero h1{font-size:clamp(34px,4.4vw,56px);line-height:1.15;letter-spacing:-.02em;font-weight:600;max-width:17em}
+  .hero h1 b{font-weight:700;color:var(--blue)}
+  .hero .row{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+  .hero p{font-size:17.5px;color:var(--muted);max-width:32em}
+  .hero .actions{justify-self:end;display:flex;gap:14px}
+
+  .photo-band{padding:0 32px}
+  .photo-band img{width:100%;max-width:1440px;margin:0 auto;height:430px;object-fit:cover;filter:saturate(.75)}
+
+  section{padding:104px 0}
+  h2{font-size:clamp(24px,2.8vw,32px);letter-spacing:-.01em}
+  .lede{color:var(--muted);font-size:17px;max-width:58ch;margin-top:14px}
+
+  /* services: numbered quiet list, generous spacing */
+  .svc{display:grid;grid-template-columns:1fr 2fr;gap:64px;padding:52px 0;border-top:1px solid var(--line)}
+  .svc:last-of-type{border-bottom:1px solid var(--line)}
+  .svc h3{font-size:21px;font-weight:700}
+  .svc h3 span{color:var(--teal);font-weight:600;margin-right:18px}
+  .svc p{color:var(--muted);font-size:16px;max-width:58ch}
+  .svc .items{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14.5px;color:var(--ink)}
+  .svc .items span{font-weight:600}
+  .svc-head{margin-bottom:56px}
+
+  /* principle */
+  .principle{background:var(--mist);text-align:left}
+  .principle .wrap{display:grid;grid-template-columns:1fr;max-width:880px}
+  .principle p.big{font-family:Montserrat,sans-serif;font-size:clamp(22px,2.8vw,30px);font-weight:600;color:var(--navy);line-height:1.45}
+  .principle p.big b{color:var(--blue);font-weight:700}
+  .principle .sub{margin-top:24px;color:var(--muted);font-size:16.5px;max-width:60ch}
+
+  /* approach: minimal columns */
+  .ap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;margin-top:64px}
+  .ap b{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:16px;display:block;padding-top:18px;border-top:2px solid var(--navy)}
+  .ap:nth-child(2) b{border-color:var(--teal)}
+  .ap:nth-child(3) b{border-color:var(--blue)}
+  .ap:nth-child(4) b{border-color:var(--navy)}
+  .ap i{font-style:normal;color:var(--teal);font-size:13px;font-weight:600;display:block;margin:4px 0 12px}
+  .ap p{font-size:14.5px;color:var(--muted)}
+
+  /* about: restrained */
+  .about .wrap{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+  .about img{width:100%;height:460px;object-fit:cover;object-position:top;filter:saturate(.85)}
+  .about .role{color:var(--teal);font-weight:700;font-family:Montserrat,sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+  .about p{color:var(--muted);margin-top:18px;font-size:16.5px;max-width:52ch}
+  .about .facts{margin-top:30px;display:grid;gap:0}
+  .about .facts div{padding:13px 0;border-top:1px solid var(--line);font-size:15px;display:grid;grid-template-columns:1fr 2fr;gap:24px}
+  .about .facts div b{color:var(--navy);font-weight:600}
+  .about .facts div span{color:var(--muted)}
+
+  /* cta */
+  .cta{border-top:1px solid var(--line);text-align:left}
+  .cta .wrap{display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:center}
+  .cta h2{font-size:clamp(28px,3.4vw,40px);max-width:16em}
+  .cta p{color:var(--muted);margin-top:14px;max-width:46ch}
+  .cta .actions{justify-self:end}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);padding:56px 0;font-size:14.5px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer img{height:46px}
+  footer a{color:var(--navy);font-weight:600}
+
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width: 920px){
+    .nav ul{display:none}
+    .hero .row,.about .wrap,.cta .wrap{grid-template-columns:1fr;gap:36px}
+    .hero .actions,.cta .actions{justify-self:start}
+    .svc{grid-template-columns:1fr;gap:18px;padding:40px 0}
+    .ap-grid{grid-template-columns:1fr 1fr;gap:36px}
+    .photo-band img{height:300px}
+  }
+  @media (max-width: 560px){
+    .ap-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a class="btn solid" href="#contact">Book a Discovery Call</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1 class="rv">Clear finances. Calm operations. <b>Purposeful growth.</b></h1>
+    <div class="row rv">
+      <p>IntiEdge Partners helps growing organizations improve visibility, streamline operations, and build scalable foundations for sustainable growth.</p>
+      <div class="actions">
+        <a class="btn solid" href="#contact">Book a Discovery Call</a>
+        <a class="btn" href="#services">Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-band rv">
+  <img src="https://picsum.photos/id/238/1800/640" alt="City skyline in black and white">
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="svc-head rv">
+      <h2>Services</h2>
+      <p class="lede">Three connected disciplines. One senior advisor who stays to implement.</p>
+    </div>
+    <div class="svc rv">
+      <h3><span>01</span>Finance Leadership</h3>
+      <div>
+        <p>Fractional CFO and interim controller leadership for organizations that need senior finance capability without a full-time executive.</p>
+        <div class="items"><span>Reporting &amp; Analysis</span><span>Budgeting &amp; Forecasting</span><span>Cash Flow</span><span>KPI Development</span></div>
+      </div>
+    </div>
+    <div class="svc rv">
+      <h3><span>02</span>Operations &amp; Process</h3>
+      <div>
+        <p>Process clarity and operational discipline for businesses whose growth has outpaced their systems.</p>
+        <div class="items"><span>Process Mapping</span><span>Workflow Optimization</span><span>Performance Management</span><span>Scalability</span></div>
+      </div>
+    </div>
+    <div class="svc rv">
+      <h3><span>03</span>AI Enablement</h3>
+      <div>
+        <p>Practical automation and AI adoption that reduces administrative burden and sharpens decision-making. No hype.</p>
+        <div class="items"><span>AI Readiness</span><span>Reporting Automation</span><span>Knowledge Management</span><span>Workflow Automation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="principle">
+  <div class="wrap">
+    <p class="big rv">Most advisors hand you recommendations and leave. IntiEdge combines strategic advice with <b>hands-on execution</b>, and stays until the results are real.</p>
+    <p class="sub rv">Finance, operations, technology, AI, and people: five disciplines most consultants treat separately, bridged in one engagement.</p>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <h2 class="rv">Approach</h2>
+    <div class="ap-grid">
+      <div class="ap rv"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Deep understanding of your business, challenges, processes, and objectives.</p></div>
+      <div class="ap rv"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state, roadmap, and initiatives prioritized for maximum impact.</p></div>
+      <div class="ap rv"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Improvements, automation, and dashboards built with your team.</p></div>
+      <div class="ap rv"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Monitoring, refinement, and continuous improvement. Early wins in 30 to 60 days.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <img class="rv" src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+    <div class="rv">
+      <div class="role">Founder &amp; Principal</div>
+      <h2>Shelly Moffat, EMBA</h2>
+      <p>Senior finance and operations leader with fifteen years across SaaS, logistics, manufacturing, construction, retail, and professional services. Executive MBA, Ivey Business School.</p>
+      <div class="facts">
+        <div><b>Education</b><span>Executive MBA, Ivey Business School</span></div>
+        <div><b>Recent roles</b><span>Director of Finance; Financial Controller, ten-company group</span></div>
+        <div><b>Delivered</b><span>65% faster invoicing, 50% faster AP, 14% OPEX reduction</span></div>
+        <div><b>Based in</b><span>London, Ontario, Canada</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <h2>The first conversation is always complimentary.</h2>
+      <p>Thirty minutes. No obligation, no pressure. A practical discussion about your business.</p>
+    </div>
+    <div class="actions rv">
+      <a class="btn solid" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-tight.png" alt="IntiEdge Partners">
+    <div>shelly@intiedge.com &nbsp;|&nbsp; 1-226-678-3324 &nbsp;|&nbsp; London, Ontario, Canada</div>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold: .15});
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>

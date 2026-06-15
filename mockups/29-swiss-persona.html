@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 29: Swiss Persona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#5A6B85;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.7;font-size:17px}
+  h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy);font-weight:600}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+  a{text-decoration:none;color:var(--blue)}
+
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .nav img{height:42px}
+  .nav ul{display:flex;gap:38px;list-style:none}
+  .nav ul a{color:var(--ink);font-weight:600;font-size:15.5px;position:relative;padding-bottom:4px}
+  .nav ul a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--blue);transition:width .25s}
+  .nav ul a:hover::after{width:100%}
+  .btn{display:inline-block;color:var(--navy);font-family:Montserrat,sans-serif;font-weight:700;font-size:15px;padding:15px 32px;border:1.5px solid var(--navy);transition:all .25s}
+  .btn:hover{background:var(--navy);color:#fff}
+  .btn.solid{background:var(--navy);color:#fff}
+  .btn.solid:hover{background:var(--blue);border-color:var(--blue)}
+
+  .sb-only{display:none}
+  body.sb .sb-only{display:revert}
+  body.sb .mm-only{display:none}
+  @media (prefers-reduced-motion: no-preference){
+    body.switched .swap{animation:swapin .45s cubic-bezier(.16,1,.3,1)}
+    @keyframes swapin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  }
+
+  /* understated persona switcher */
+  .pswitch{border-bottom:1px solid var(--line);padding:22px 0}
+  .pswitch .wrap{display:flex;align-items:baseline;gap:28px;flex-wrap:wrap}
+  .pswitch .q{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:16px}
+  .pswitch button{font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;color:var(--muted);background:none;border:none;cursor:pointer;padding:6px 0;position:relative;transition:color .2s}
+  .pswitch button::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2.5px;background:var(--blue);transition:width .3s}
+  .pswitch button:hover{color:var(--navy)}
+  .pswitch button.on{color:var(--navy)}
+  .pswitch button.on::after{width:100%}
+
+  .hero{padding:110px 0 96px}
+  .hero h1{font-size:clamp(34px,4.4vw,56px);line-height:1.15;letter-spacing:-.02em;max-width:17em}
+  .hero h1 b{font-weight:700;color:var(--blue)}
+  .hero .row{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+  .hero p{font-size:18.5px;color:var(--muted);max-width:32em}
+  .hero .actions{justify-self:end;display:flex;gap:14px}
+
+  .photo-band{padding:0 32px;overflow:hidden}
+  .photo-band .frame{max-width:1440px;margin:0 auto;overflow:hidden}
+  .photo-band img{width:100%;height:420px;object-fit:cover;filter:saturate(.15)}
+  @media (prefers-reduced-motion: no-preference){
+    .photo-band img{animation:kb 28s ease-in-out infinite alternate}
+    @keyframes kb{from{transform:scale(1)}to{transform:scale(1.05)}}
+  }
+
+  section{padding:104px 0}
+  h2{font-size:clamp(26px,3vw,36px);letter-spacing:-.01em}
+  .lede{color:var(--muted);font-size:18px;max-width:58ch;margin-top:14px}
+
+  /* expandable numbered service rows */
+  .svc{border-top:1px solid var(--line)}
+  .svc:last-of-type{border-bottom:1px solid var(--line)}
+  .svc-head{width:100%;background:none;border:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:38px 4px;text-align:left;transition:padding-left .3s}
+  .svc-head:hover{padding-left:14px}
+  .svc-head h3{font-size:23px;font-weight:700;display:flex;align-items:baseline;gap:22px}
+  .svc-head h3 span{color:var(--teal);font-weight:600;font-size:17px}
+  .svc-head .x{width:34px;height:34px;border:1.5px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;transition:background .25s,border-color .25s,transform .35s}
+  .svc-head .x::before{content:"";position:absolute;width:13px;height:1.5px;background:var(--navy)}
+  .svc-head .x::after{content:"";position:absolute;width:1.5px;height:13px;background:var(--navy);transition:opacity .2s}
+  .svc.open .svc-head .x{background:var(--navy);border-color:var(--navy);transform:rotate(135deg)}
+  .svc.open .svc-head .x::before,.svc.open .svc-head .x::after{background:#fff}
+  .svc-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)}
+  @media (prefers-reduced-motion: reduce){.svc-body{transition:none}}
+  .svc-body .inner{padding:0 4px 46px}
+  .svc-body p{color:var(--muted);font-size:17px;max-width:56ch}
+  .svc-body .items{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:15.5px;color:var(--ink)}
+  .svc-body .items span{font-weight:600}
+
+  /* minimal calculator */
+  .est{background:var(--mist)}
+  .est .panel{margin-top:52px;display:grid;grid-template-columns:7fr 5fr;background:#fff;border:1px solid var(--line)}
+  .est .controls{padding:52px 56px}
+  .ctl{margin-bottom:42px}
+  .ctl:last-child{margin-bottom:0}
+  .ctl label{display:flex;justify-content:space-between;align-items:baseline;gap:20px;font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:17px;margin-bottom:16px}
+  .ctl label output{color:var(--blue);font-size:23px;font-variant-numeric:tabular-nums;flex-shrink:0}
+  input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--navy) var(--fill,50%),var(--line) var(--fill,50%));outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:5px solid var(--navy);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:5px solid var(--navy);cursor:pointer}
+  .ctl .hintline{font-size:15.5px;color:var(--muted);margin-top:12px}
+  .est .result{background:var(--navy);color:#fff;padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+  .est .result .label{font-family:Montserrat,sans-serif;font-weight:700;font-size:14.5px;letter-spacing:.12em;text-transform:uppercase;color:#7FD4E8}
+  .est .result b{font-family:Montserrat,sans-serif;font-size:clamp(42px,4.2vw,58px);font-weight:700;line-height:1.08;display:block;margin-top:12px;font-variant-numeric:tabular-nums}
+  .est .result b span{color:var(--blue)}
+  .est .result .sub{color:#C7D5F2;font-size:16.5px;margin-top:10px}
+  .est .result .row2{margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.2)}
+  .est .result .row2 b{font-size:clamp(30px,2.8vw,40px);margin-top:8px}
+  .est .result .go{margin-top:32px}
+  .est .result .go .btn{border-color:#fff;color:#fff}
+  .est .result .go .btn:hover{background:#fff;color:var(--navy)}
+  .est .basis{font-size:15.5px;color:var(--muted);margin-top:24px;max-width:74ch}
+
+  /* approach minimal */
+  .ap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;margin-top:64px}
+  .ap b{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:17.5px;display:block;padding-top:20px;border-top:2.5px solid var(--navy)}
+  .ap:nth-child(2) b{border-color:var(--teal)}
+  .ap:nth-child(3) b{border-color:var(--blue)}
+  .ap i{font-style:normal;color:var(--teal);font-size:15px;font-weight:600;display:block;margin:5px 0 14px}
+  .ap p{font-size:16px;color:var(--muted)}
+
+  /* about */
+  .about .wrap{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+  .about img{width:100%;height:470px;object-fit:cover;object-position:top;filter:saturate(.85)}
+  .about .role{color:var(--teal);font-weight:700;font-family:Montserrat,sans-serif;font-size:15px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+  .about p{color:var(--muted);margin-top:18px;font-size:17.5px;max-width:52ch}
+  .about .facts{margin-top:32px}
+  .about .facts div{padding:15px 0;border-top:1px solid var(--line);font-size:16.5px;display:grid;grid-template-columns:1fr 2fr;gap:24px}
+  .about .facts div b{color:var(--navy);font-weight:600}
+  .about .facts div span{color:var(--muted)}
+
+  .cta{border-top:1px solid var(--line)}
+  .cta .wrap{display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:center}
+  .cta h2{font-size:clamp(28px,3.4vw,42px);max-width:16em}
+  .cta p{color:var(--muted);margin-top:16px;max-width:46ch;font-size:18px}
+  .cta .actions{justify-self:end}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);padding:58px 0;font-size:16px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer img{height:48px}
+  footer a{color:var(--navy);font-weight:600}
+
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width: 920px){
+    .nav ul{display:none}
+    .hero .row,.about .wrap,.cta .wrap{grid-template-columns:1fr;gap:36px}
+    .hero .actions,.cta .actions{justify-self:start}
+    .est .panel{grid-template-columns:1fr}
+    .est .controls{padding:36px 28px}
+    .ap-grid{grid-template-columns:1fr 1fr;gap:36px}
+    .photo-band img{height:300px}
+  }
+  @media (max-width: 560px){.ap-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#estimator">Your Numbers</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a class="btn solid" href="#contact">Book a Discovery Call</a>
+  </div>
+</header>
+
+<div class="pswitch">
+  <div class="wrap">
+    <span class="q">Reading as:</span>
+    <button id="segMM" class="on">a mid-market leadership team</button>
+    <button id="segSB">a growing small business owner</button>
+  </div>
+</div>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="swap">
+      <h1 class="mm-only">Clear finances. Governed operations. <b>Purposeful growth.</b></h1>
+      <h1 class="sb-only">Clear finances. Calm operations. <b>Purposeful growth.</b></h1>
+    </div>
+    <div class="row swap">
+      <p class="mm-only">IntiEdge Partners helps growing organizations improve visibility, strengthen governance, and build scalable foundations for sustainable growth.</p>
+      <p class="sb-only">IntiEdge helps business owners gain clarity, improve efficiency, and make better decisions. Practical help, not just advice.</p>
+      <div class="actions">
+        <a class="btn solid" href="#contact">Book a Discovery Call</a>
+        <a class="btn" href="#services">Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-band rv">
+  <div class="frame"><img src="https://picsum.photos/id/238/1800/620" alt="City skyline in black and white"></div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px">
+      <h2>Services</h2>
+      <p class="lede">Three connected disciplines. Select one to see what's inside.</p>
+    </div>
+
+    <div class="svc rv open" id="firstSvc">
+      <button class="svc-head"><h3><span>01</span>Finance Leadership</h3><span class="x"></span></button>
+      <div class="svc-body">
+        <div class="inner">
+          <p class="mm-only">Fractional CFO and interim controller leadership for organizations that need senior finance capability without a full-time executive. Reporting your board can trust, forecasts your decisions can rest on.</p>
+          <p class="sb-only">An experienced finance leader in your corner: clear monthly numbers, cash flow you can trust, and budgets that actually guide decisions.</p>
+          <div class="items"><span>Fractional CFO</span><span>Interim Controller</span><span>Reporting &amp; Analysis</span><span>Budgeting &amp; Forecasting</span><span>Cash Flow</span><span>KPI Development</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc rv">
+      <button class="svc-head"><h3><span>02</span>Operations &amp; Process</h3><span class="x"></span></button>
+      <div class="svc-body">
+        <div class="inner">
+          <p class="mm-only">Process clarity and operational discipline for organizations whose growth has outpaced their systems. We map what is, design what should be, and build it with your team.</p>
+          <p class="sb-only">Less chaos, fewer spreadsheets. We untangle how the work gets done and rebuild it so growth feels like progress again.</p>
+          <div class="items"><span>Process Mapping</span><span>Workflow Optimization</span><span>Organizational Effectiveness</span><span>Performance Management</span><span>Scalability</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc rv">
+      <button class="svc-head"><h3><span>03</span>AI Enablement</h3><span class="x"></span></button>
+      <div class="svc-body">
+        <div class="inner">
+          <p class="mm-only">Practical automation and AI adoption that reduces administrative burden and sharpens decision-making. Every initiative prioritized by payback.</p>
+          <p class="sb-only">Practical automation that gives your team hours back every week. No jargon, no replacing people, just less busywork.</p>
+          <div class="items"><span>AI Readiness</span><span>Reporting Automation</span><span>AI-Assisted Analysis</span><span>Knowledge Management</span><span>Workflow Automation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="est" id="estimator">
+  <div class="wrap">
+    <h2 class="rv">Your numbers</h2>
+    <p class="lede rv">Tuned to your selection above. Move the sliders to match your reality.</p>
+    <div class="panel rv">
+      <div class="controls">
+        <div class="ctl">
+          <label><span class="mm-only">Hours your finance team spends on reporting each month</span><span class="sb-only">Hours you spend on reports and bookkeeping each month</span> <output id="oRep">60</output></label>
+          <input type="range" id="rRep" min="20" max="300" value="60" step="5">
+          <div class="hintline"><span class="mm-only">Month-end close, management reports, board packs, consolidations.</span><span class="sb-only">Month-end numbers, invoicing follow-ups, chasing spreadsheets.</span></div>
+        </div>
+        <div class="ctl">
+          <label>Hours spent on manual processing each month <output id="oProc">100</output></label>
+          <input type="range" id="rProc" min="20" max="500" value="100" step="10">
+          <div class="hintline"><span class="mm-only">Invoicing, accounts payable, data entry, copying between systems.</span><span class="sb-only">Invoicing, paying bills, data entry, retyping things between tools.</span></div>
+        </div>
+        <div class="ctl">
+          <label>Average loaded cost per hour <output id="oRate">$55</output></label>
+          <input type="range" id="rRate" min="30" max="150" value="55" step="5">
+          <div class="hintline">Salary plus overhead for the people doing this work.</div>
+        </div>
+      </div>
+      <div class="result">
+        <div class="label">Estimated recoverable time</div>
+        <b><span id="hrs">960</span> <span>hours / year</span></b>
+        <div class="sub">that automation could hand back to your team</div>
+        <div class="row2">
+          <div class="label">Estimated annual value</div>
+          <b>$<span id="dollars">52,800</span></b>
+        </div>
+        <div class="go"><a class="btn" href="#contact">Book a Discovery Call</a></div>
+      </div>
+    </div>
+    <p class="basis rv">Illustrative estimate assuming a 50% reduction in the hours above, consistent with results Shelly has delivered in past roles (65% faster invoicing, 50% faster AP processing). Your discovery call produces a real number for your business.</p>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <h2 class="rv">Approach</h2>
+    <div class="ap-grid">
+      <div class="ap rv"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Deep understanding of your business, challenges, processes, and objectives.</p></div>
+      <div class="ap rv"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state, roadmap, and initiatives prioritized for maximum impact.</p></div>
+      <div class="ap rv"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Improvements, automation, and dashboards built with your team.</p></div>
+      <div class="ap rv"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Monitoring, refinement, and continuous improvement. Early wins in 30 to 60 days.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <img class="rv" src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+    <div class="rv">
+      <div class="role">Founder &amp; Principal</div>
+      <h2>Shelly Moffat, EMBA</h2>
+      <p>Senior finance and operations leader with fifteen years across SaaS, logistics, manufacturing, construction, retail, and professional services. Executive MBA, Ivey Business School.</p>
+      <div class="facts">
+        <div><b>Education</b><span>Executive MBA, Ivey Business School</span></div>
+        <div><b>Recent roles</b><span>Director of Finance; Financial Controller, ten-company group</span></div>
+        <div><b>Delivered</b><span>65% faster invoicing, 50% faster AP, 14% OPEX reduction</span></div>
+        <div><b>Based in</b><span>London, Ontario, Canada</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <h2>The first conversation is always complimentary.</h2>
+      <p class="swap"><span class="mm-only">Thirty minutes with a senior operator. No obligation, a practical discussion about your organization.</span><span class="sb-only">Thirty minutes, no obligation, no sales pressure. Just a practical chat about your business.</span></p>
+    </div>
+    <div class="actions rv">
+      <a class="btn solid" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-tight.png" alt="IntiEdge Partners">
+    <div>shelly@intiedge.com &nbsp;|&nbsp; 1-226-678-3324 &nbsp;|&nbsp; London, Ontario, Canada</div>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold: .15});
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  }
+
+  const CALC = {
+    mm: { rep: {min:20, max:300, step:5,  val:60},  proc: {min:20, max:500, step:10, val:100}, rate: {min:30, max:150, step:5, val:55} },
+    sb: { rep: {min:5,  max:80,  step:5,  val:20},  proc: {min:5,  max:150, step:5,  val:30},  rate: {min:25, max:100, step:5, val:40} }
+  };
+  const rRep = document.getElementById('rRep'), rProc = document.getElementById('rProc'), rRate = document.getElementById('rRate');
+  const oRep = document.getElementById('oRep'), oProc = document.getElementById('oProc'), oRate = document.getElementById('oRate');
+  const hrs = document.getElementById('hrs'), dollars = document.getElementById('dollars');
+  function fill(s) { s.style.setProperty('--fill', ((s.value - s.min) / (s.max - s.min) * 100) + '%'); }
+  function recalc() {
+    oRep.textContent = rRep.value;
+    oProc.textContent = rProc.value;
+    oRate.textContent = '$' + rRate.value;
+    [rRep, rProc, rRate].forEach(fill);
+    const savedHours = Math.round((+rRep.value + +rProc.value) * 0.5 * 12);
+    hrs.textContent = savedHours.toLocaleString('en-CA');
+    dollars.textContent = (savedHours * +rRate.value).toLocaleString('en-CA');
+  }
+  function applyCalcPersona(sb) {
+    const p = CALC[sb ? 'sb' : 'mm'];
+    [['rep', rRep], ['proc', rProc], ['rate', rRate]].forEach(([k, s]) => {
+      s.min = p[k].min; s.max = p[k].max; s.step = p[k].step; s.value = p[k].val;
+    });
+    recalc();
+  }
+  [rRep, rProc, rRate].forEach(s => s.addEventListener('input', recalc));
+  recalc();
+
+  const segMM = document.getElementById('segMM'), segSB = document.getElementById('segSB');
+  function setPersona(sb) {
+    document.body.classList.toggle('sb', sb);
+    segSB.classList.toggle('on', sb);
+    segMM.classList.toggle('on', !sb);
+    applyCalcPersona(sb);
+    document.body.classList.remove('switched');
+    void document.body.offsetWidth;
+    document.body.classList.add('switched');
+  }
+  segMM.addEventListener('click', () => setPersona(false));
+  segSB.addEventListener('click', () => setPersona(true));
+
+  // expandable service rows
+  function setOpen(item, open) {
+    const body = item.querySelector('.svc-body');
+    item.classList.toggle('open', open);
+    body.style.maxHeight = open ? body.scrollHeight + 'px' : '0';
+  }
+  document.querySelectorAll('.svc').forEach(item => {
+    setOpen(item, item.classList.contains('open'));
+    item.querySelector('.svc-head').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.svc.open').forEach(o => setOpen(o, false));
+      if (!isOpen) setOpen(item, true);
+    });
+  });
+  window.addEventListener('load', () => {
+    const first = document.getElementById('firstSvc');
+    if (first.classList.contains('open')) setOpen(first, true);
+  });
+</script>
+</body>
+</html>

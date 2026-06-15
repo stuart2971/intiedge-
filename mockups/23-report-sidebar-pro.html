@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 23: Report Sidebar Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#44546E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px}
+  h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:var(--blue)}
+
+  .layout{display:grid;grid-template-columns:368px 1fr;min-height:100dvh;max-width:1600px;margin:0 auto}
+
+  /* sidebar */
+  aside{border-right:1px solid var(--line);padding:44px 30px 36px 56px;position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 45%,#E9F1FB 100%);overflow:hidden}
+  aside > :not(.aside-wave){position:relative;z-index:1}
+  /* business-card wave: navy spine + bright-blue arc down the left edge of the sidebar */
+  .aside-wave{position:absolute;left:0;top:0;height:100%;width:56px;z-index:0;pointer-events:none}
+  aside .logo{display:flex;justify-content:center}
+  aside .logo img{height:112px;width:auto}
+  aside .persona{margin-top:40px}
+  aside .persona .q{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:16px;margin-bottom:14px;text-align:center}
+  .seg{display:flex;background:var(--mist);border:1px solid var(--line);border-radius:999px;padding:5px;gap:4px}
+  .seg button{flex:1;font-family:Montserrat,sans-serif;font-weight:700;font-size:15px;color:var(--muted);background:none;border:none;border-radius:999px;cursor:pointer;padding:14px 6px;white-space:nowrap;transition:color .2s,background .25s,box-shadow .25s}
+  .seg button:hover{color:var(--navy)}
+  .seg button.on{background:var(--navy);color:#fff;box-shadow:0 6px 16px rgba(11,42,99,.28)}
+  aside nav{margin-top:34px;display:grid;gap:2px}
+  aside nav a{display:block;padding:13px 16px;color:var(--muted);font-weight:600;font-size:15.5px;border-left:3px solid transparent;transition:color .2s,border-color .2s,background .2s}
+  aside nav a:hover{color:var(--navy);background:var(--mist)}
+  aside nav a.on{color:var(--navy);border-left-color:var(--blue);background:var(--mist)}
+  aside .foot{margin-top:auto}
+  .btn{display:inline-block;background:var(--navy);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;transition:background .25s;text-align:center}
+  .btn:hover{background:var(--blue)}
+  .btn.lt{background:#fff;color:var(--navy)}
+  .btn.lt:hover{background:var(--mist)}
+  aside .btn{display:block}
+
+  /* persona visibility */
+  .sb-only{display:none}
+  body.sb .sb-only{display:revert}
+  body.sb .mm-only{display:none}
+  @media (prefers-reduced-motion: no-preference){
+    body.switched .swap{animation:swapin .45s cubic-bezier(.16,1,.3,1)}
+    @keyframes swapin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  }
+
+  main{min-width:0}
+  .block{padding:96px 72px;border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(28px,3vw,38px);letter-spacing:-.015em;line-height:1.18}
+  .lede{color:var(--muted);font-size:18.5px;max-width:58ch;margin-top:14px}
+
+  /* hero */
+  .hero h1{font-size:clamp(36px,3.8vw,54px);line-height:1.12;letter-spacing:-.02em;font-weight:800;max-width:16em}
+  .hero h1 span{color:var(--blue)}
+  .hero p{margin:24px 0 34px;font-size:19.5px;color:var(--muted);max-width:34em}
+  .hero .band{margin-top:52px;overflow:hidden}
+  .hero .band img{width:100%;height:340px;object-fit:cover;filter:saturate(.15)}
+
+  /* calculator */
+  .est-panel{margin-top:52px;display:grid;grid-template-columns:7fr 5fr;border:1px solid var(--line);background:#fff;box-shadow:0 24px 60px rgba(11,42,99,.10)}
+  .controls{padding:52px 56px}
+  .ctl{margin-bottom:42px}
+  .ctl:last-child{margin-bottom:0}
+  .ctl label{display:flex;justify-content:space-between;align-items:baseline;gap:20px;font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:17.5px;margin-bottom:16px}
+  .ctl label output{color:var(--blue);font-size:24px;font-variant-numeric:tabular-nums;flex-shrink:0}
+  input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:7px;border-radius:4px;background:linear-gradient(90deg,var(--blue) var(--fill,50%),var(--line) var(--fill,50%));outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--blue);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--blue);cursor:pointer}
+  .ctl .hintline{font-size:16px;color:var(--muted);margin-top:12px}
+  .result{background:var(--navy);color:#fff;padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+  .result .label{font-family:Montserrat,sans-serif;font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:#7FD4E8}
+  .result b{font-family:Montserrat,sans-serif;font-size:clamp(44px,4.2vw,60px);font-weight:800;line-height:1.08;display:block;margin-top:12px;font-variant-numeric:tabular-nums}
+  .result b span{color:var(--blue)}
+  .result .sub{color:#C7D5F2;font-size:17px;margin-top:10px}
+  .result .row2{margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.2)}
+  .result .row2 b{font-size:clamp(32px,2.8vw,42px);margin-top:8px}
+  .result .go{margin-top:34px}
+  .basis{font-size:16px;color:var(--muted);margin-top:24px;max-width:74ch}
+
+  /* about navy panel */
+  .about-card{display:grid;grid-template-columns:5fr 7fr;background:linear-gradient(135deg,var(--navy) 0%,#0D3A7E 75%,#10518F 130%);color:#fff;overflow:hidden;margin-top:48px}
+  .about-card img{width:100%;height:100%;min-height:440px;object-fit:cover;object-position:top}
+  .about-card .body{padding:56px}
+  .about-card .role{color:#7FD4E8;font-weight:700;font-family:Montserrat,sans-serif;font-size:15px;letter-spacing:.12em;text-transform:uppercase}
+  .about-card h2{color:#fff;margin:10px 0 0}
+  .about-card p{color:#D6E4FA;margin-top:18px;max-width:50ch;font-size:17.5px}
+  .about-card .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .about-card .pills span{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:9px 19px;font-size:15px;font-weight:600}
+
+  /* challenges: calm single-column accordion */
+  .acc{margin-top:44px;max-width:880px;border:1px solid var(--line);background:#fff}
+  .acc-item{border-top:1px solid var(--line)}
+  .acc-item:first-of-type{border-top:none}
+  .acc-head{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 30px;text-align:left;transition:background .2s}
+  .acc-head:hover{background:var(--mist)}
+  .acc-head h3{font-size:18.5px;font-weight:700;line-height:1.45}
+  .acc-head .x{flex-shrink:0;width:34px;height:34px;border:1.5px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;transition:background .25s,border-color .25s,transform .35s}
+  .acc-head .x::before{content:"";position:absolute;width:13px;height:2px;background:var(--navy)}
+  .acc-head .x::after{content:"";position:absolute;width:2px;height:13px;background:var(--navy);transition:opacity .2s}
+  .acc-item.open .acc-head .x{background:var(--navy);border-color:var(--navy);transform:rotate(135deg)}
+  .acc-item.open .acc-head .x::before,.acc-item.open .acc-head .x::after{background:#fff}
+  .acc-body{display:block;max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.16,1,.3,1)}
+  @media (prefers-reduced-motion: reduce){.acc-body{transition:none}}
+  .acc-body .inner{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:2px 30px 28px;max-width:70ch}
+  .acc-body .inner::before{content:"";width:4px;border-radius:2px;background:var(--blue)}
+  .acc-body b{display:block;font-family:Montserrat,sans-serif;color:var(--navy);font-size:14.5px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+  .acc-body p{color:var(--muted);font-size:16.5px;line-height:1.6}
+  .ch-hint{margin-top:28px;font-size:16.5px;color:var(--navy);font-weight:600}
+
+  /* dash columns */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:48px}
+  .cols h3{font-size:20px;display:flex;align-items:baseline;gap:14px}
+  .cols h3::before{content:"";width:38px;height:5px;flex-shrink:0;background:var(--blue);transform:translateY(-5px)}
+  .cols > div:nth-child(2) h3::before{background:var(--teal)}
+  .cols > div:nth-child(3) h3::before{background:var(--navy)}
+  .cols p{color:var(--muted);font-size:17px;margin-top:14px}
+
+  /* timeline */
+  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;position:relative}
+  .how-line{position:absolute;top:11px;left:6%;right:6%;height:2px;background:var(--line);overflow:hidden}
+  .how-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+  .how-grid.drawn .how-line i{width:100%}
+  .st{padding:0 22px;position:relative}
+  .st::before{content:"";width:22px;height:22px;border-radius:50%;background:#fff;border:5px solid var(--blue);display:block;margin-bottom:20px;position:relative}
+  .st:nth-child(3)::before{border-color:var(--teal)}
+  .st:nth-child(4)::before{border-color:var(--navy)}
+  .st:nth-child(5)::before{border-color:var(--blue)}
+  .st b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:18.5px;display:block}
+  .st i{font-style:normal;color:var(--teal);font-weight:600;font-size:15.5px;display:block;margin:4px 0 10px}
+  .st p{font-size:16px;color:var(--muted)}
+
+  /* CTA */
+  .cta-block{display:grid;grid-template-columns:2fr 1fr;gap:56px;align-items:center}
+  .cta-block h2{max-width:16em}
+  .cta-block p{color:var(--muted);margin-top:14px;max-width:46ch;font-size:18px}
+  .cta-block .actions{justify-self:end}
+
+  .colophon{padding:44px 72px;color:var(--muted);font-size:16px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .colophon a{color:var(--navy);font-weight:600}
+
+  .rv{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width: 1020px){
+    .layout{grid-template-columns:1fr}
+    aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:28px 24px}
+    .aside-wave{display:none}
+    aside .logo img{height:88px}
+    aside nav{display:none}
+    aside .persona{margin-top:24px;max-width:440px;margin-left:auto;margin-right:auto;width:100%}
+    aside .foot{margin-top:22px;max-width:440px;margin-left:auto;margin-right:auto;width:100%}
+    .block{padding:64px 24px}
+    .cols{grid-template-columns:1fr}
+    .est-panel{grid-template-columns:1fr}
+    .controls{padding:36px 28px}
+    .how-grid{grid-template-columns:1fr;gap:28px}
+    .how-line{display:none}
+    .about-card,.cta-block{grid-template-columns:1fr}
+    .cta-block .actions{justify-self:start}
+    .colophon{padding:32px 24px}
+    .acc-head{padding:20px 22px}
+    .acc-body .inner{padding:2px 22px 24px}
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside>
+    <a class="logo" href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <div class="persona">
+      <div class="q">Which sounds more like you?</div>
+      <div class="seg" role="group" aria-label="Choose your business type">
+        <button id="segMM" class="on">Mid-market</button>
+        <button id="segSB">Small business</button>
+      </div>
+    </div>
+    <nav id="spy">
+      <a href="#top" class="on">Overview</a>
+      <a href="#estimator">Your Numbers</a>
+      <a href="#about">About Shelly</a>
+      <a href="#challenges">Your Challenges</a>
+      <a href="#services">Where We Focus</a>
+      <a href="#approach">How We Get There</a>
+    </nav>
+    <div class="foot">
+      <a class="btn" href="#contact">Book a Discovery Call</a>
+    </div>
+    <svg class="aside-wave" viewBox="0 0 56 800" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 0 L0 800 L22 800 C 8 690 30 600 18 500 C 6 410 30 320 20 220 C 10 140 28 70 16 0 Z" fill="#0B2A63"/>
+      <path d="M26 0 C 38 70 20 140 30 220 C 40 320 16 410 28 500 C 40 600 18 690 32 800" fill="none" stroke="#148EEA" stroke-width="6" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+    </svg>
+  </aside>
+
+  <main>
+    <div class="block hero" id="top">
+      <div class="swap">
+        <div class="mm-only">
+          <h1>A structured path to <span>profitable, governed growth</span>.</h1>
+          <p>Finance leadership, operational excellence, and AI-enabled transformation for CEOs, CFOs, boards, and owners. Read this page like the plan it is.</p>
+        </div>
+        <div class="sb-only">
+          <h1>Your business, <span>back under control</span>.</h1>
+          <p>Clarity, efficiency, and better decisions for owners whose business has outgrown the spreadsheets. Read this page like the plan it is.</p>
+        </div>
+        <a class="btn" href="#contact">Book a Discovery Call</a>
+      </div>
+      <div class="band rv"><img src="https://picsum.photos/id/238/1600/540" alt="City skyline in black and white"></div>
+    </div>
+
+    <div class="block" id="estimator">
+      <h2 class="rv">Your numbers</h2>
+      <p class="lede rv">Tuned to the selection in the sidebar. Move the sliders to match your reality.</p>
+      <div class="est-panel rv">
+        <div class="controls">
+          <div class="ctl">
+            <label><span class="mm-only">Hours your finance team spends on reporting each month</span><span class="sb-only">Hours you spend on reports and bookkeeping each month</span> <output id="oRep">60</output></label>
+            <input type="range" id="rRep" min="20" max="300" value="60" step="5">
+            <div class="hintline"><span class="mm-only">Month-end close, management reports, board packs, consolidations.</span><span class="sb-only">Month-end numbers, invoicing follow-ups, chasing spreadsheets.</span></div>
+          </div>
+          <div class="ctl">
+            <label>Hours spent on manual processing each month <output id="oProc">100</output></label>
+            <input type="range" id="rProc" min="20" max="500" value="100" step="10">
+            <div class="hintline"><span class="mm-only">Invoicing, accounts payable, data entry, copying between systems.</span><span class="sb-only">Invoicing, paying bills, data entry, retyping things between tools.</span></div>
+          </div>
+          <div class="ctl">
+            <label>Average loaded cost per hour <output id="oRate">$55</output></label>
+            <input type="range" id="rRate" min="30" max="150" value="55" step="5">
+            <div class="hintline">Salary plus overhead for the people doing this work.</div>
+          </div>
+        </div>
+        <div class="result">
+          <div class="label">Estimated recoverable time</div>
+          <b><span id="hrs">960</span> <span>hours / year</span></b>
+          <div class="sub">that automation could hand back to your team</div>
+          <div class="row2">
+            <div class="label">Estimated annual value</div>
+            <b>$<span id="dollars">52,800</span></b>
+          </div>
+          <div class="go"><a class="btn lt" href="#contact">Book a Discovery Call</a></div>
+        </div>
+      </div>
+      <p class="basis rv">Illustrative estimate assuming a 50% reduction in the hours above, consistent with results Shelly has delivered in past roles (65% faster invoicing, 50% faster AP processing). Your discovery call produces a real number for your business.</p>
+    </div>
+
+    <div class="block" id="about">
+      <h2 class="rv">About Shelly</h2>
+      <div class="about-card rv">
+        <img src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+        <div class="body">
+          <div class="role">Founder &amp; Principal</div>
+          <h2>Shelly Moffat, EMBA</h2>
+          <p>Executive MBA graduate of Ivey Business School with 15+ years of senior finance and operations leadership, from family-owned businesses to multi-entity groups. Strategic advice with hands-on execution, true to the IntiEdge name: inti means core.</p>
+          <div class="pills">
+            <span>SaaS</span><span>Logistics</span><span>Manufacturing</span><span>Construction</span><span>Retail</span><span>Professional Services</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block" id="challenges">
+      <div class="swap">
+        <h2 class="mm-only">The challenges we're hired for</h2>
+        <h2 class="sb-only">Do any of these sound familiar?</h2>
+        <p class="lede"><span class="mm-only">Six patterns we see in growing organizations. Open one to see how IntiEdge responds.</span><span class="sb-only">If you've said any of these out loud this month, you're who we built this for. Open one to see our answer.</span></p>
+      </div>
+      <div class="acc swap">
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Limited visibility into performance and profitability</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How IntiEdge responds</b><p>KPI frameworks and live dashboards built on your real data, like the unified Power BI reporting Shelly designed across a ten-company group.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Financial reports take too long to prepare</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How IntiEdge responds</b><p>We automate the reporting pipeline. Shelly cut an invoicing cycle by 65% and AP processing by 50%, freeing the team for analysis instead of assembly.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Growth is outpacing systems and controls</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How IntiEdge responds</b><p>Scalable processes, governance, and internal controls designed for the size you're becoming, not the size you were.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Technology investments aren't delivering expected value</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How IntiEdge responds</b><p>ERP and systems optimization plus practical AI adoption, prioritized by payback and implemented rather than just recommended.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Leadership gaps and resource constraints</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How IntiEdge responds</b><p>Fractional CFO and interim controller engagements: senior capability at part-time cost, with a clean handover when you're ready to hire.</p></div></div></div>
+        </div>
+        <div class="acc-item mm-only">
+          <button class="acc-head"><h3>Inefficient processes and manual workflows</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>How IntiEdge responds</b><p>Process mapping and workflow redesign that hands hours back to your team every month, measured and reported.</p></div></div></div>
+        </div>
+
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"I don't know which customers actually make me money."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>Simple margin reporting that shows where the profit really comes from, so your pricing and your effort follow the money.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"Reports take forever, and they're stale by the time they're done."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>Month-end automated down from days to hours. The numbers arrive while they still matter.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"My team spends half the week on spreadsheets."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>We automate the busywork: invoicing, bill payments, data entry, and the endless retyping between tools.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"We're growing, but everything feels more chaotic."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>Clear processes and simple systems that make the next hire easier instead of harder. Growth should feel like progress.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"I know things need to improve. I just don't know where to start."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>A short assessment finds the two or three changes with the biggest payoff, and we start there. Early wins inside 60 days.</p></div></div></div>
+        </div>
+        <div class="acc-item sb-only">
+          <button class="acc-head"><h3>"I need senior help, but I can't justify an executive salary."</h3><span class="x"></span></button>
+          <div class="acc-body"><div class="inner"><div><b>Our answer</b><p>A senior finance leader in your corner for a few hours a week, not a six-figure hire. Scale up or down as you need.</p></div></div></div>
+        </div>
+      </div>
+      <p class="ch-hint swap"><span class="mm-only">Recognize two or more? That's exactly when a discovery call is worth 30 minutes.</span><span class="sb-only">Nodding at even one of these? That's worth a 30-minute conversation.</span></p>
+    </div>
+
+    <div class="block" id="services">
+      <h2 class="rv">Where we focus</h2>
+      <div class="cols">
+        <div class="rv">
+          <h3>Finance Leadership</h3>
+          <p class="mm-only">Fractional CFO and interim controller leadership: reporting and analysis, budgeting and forecasting, cash flow, KPI development, and governance support.</p>
+          <p class="sb-only">An experienced finance leader in your corner: clear monthly numbers, cash flow you can trust, and budgets that actually guide decisions.</p>
+        </div>
+        <div class="rv">
+          <h3>Operations &amp; Process</h3>
+          <p class="mm-only">Process mapping and optimization, workflow redesign, organizational effectiveness, performance management, and the discipline to scale cleanly.</p>
+          <p class="sb-only">Less chaos, fewer spreadsheets. We untangle how work gets done and rebuild it so growth feels like progress again.</p>
+        </div>
+        <div class="rv">
+          <h3>Technology &amp; AI</h3>
+          <p class="mm-only">AI readiness, reporting automation, dashboard development, ERP and systems optimization, and practical adoption strategies that pay for themselves.</p>
+          <p class="sb-only">Practical automation that gives your team hours back every week. No jargon, no replacing people, just less busywork.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="block" id="approach">
+      <h2 class="rv">How we get there</h2>
+      <div class="how-grid" id="howGrid">
+        <div class="how-line"><i></i></div>
+        <div class="st rv"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Interviews, current state assessment, process mapping, and opportunity identification.</p></div>
+        <div class="st rv"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state, roadmap, KPI framework, and a quick wins plan.</p></div>
+        <div class="st rv"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Improvements, dashboards, automation, training, and change support.</p></div>
+        <div class="st rv"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Performance reviews, KPI monitoring, and continuous refinement.</p></div>
+      </div>
+    </div>
+
+    <div class="block" id="contact">
+      <div class="cta-block">
+        <div class="rv">
+          <h2>The first conversation is always complimentary.</h2>
+          <p class="swap"><span class="mm-only">Thirty minutes with a senior operator. No obligation, a practical discussion about your organization.</span><span class="sb-only">Thirty minutes, no obligation, no sales pressure. Just a practical chat about your business.</span></p>
+        </div>
+        <div class="actions rv">
+          <a class="btn" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <span>shelly@intiedge.com &nbsp;|&nbsp; 1-226-678-3324 &nbsp;|&nbsp; London, Ontario, Canada</span>
+      <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+    </div>
+  </main>
+</div>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold: .15});
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  }
+
+  // adaptive calculator
+  const CALC = {
+    mm: { rep: {min:20, max:300, step:5,  val:60},  proc: {min:20, max:500, step:10, val:100}, rate: {min:30, max:150, step:5, val:55} },
+    sb: { rep: {min:5,  max:80,  step:5,  val:20},  proc: {min:5,  max:150, step:5,  val:30},  rate: {min:25, max:100, step:5, val:40} }
+  };
+  const rRep = document.getElementById('rRep'), rProc = document.getElementById('rProc'), rRate = document.getElementById('rRate');
+  const oRep = document.getElementById('oRep'), oProc = document.getElementById('oProc'), oRate = document.getElementById('oRate');
+  const hrs = document.getElementById('hrs'), dollars = document.getElementById('dollars');
+  function fill(s) { s.style.setProperty('--fill', ((s.value - s.min) / (s.max - s.min) * 100) + '%'); }
+  function recalc() {
+    oRep.textContent = rRep.value;
+    oProc.textContent = rProc.value;
+    oRate.textContent = '$' + rRate.value;
+    [rRep, rProc, rRate].forEach(fill);
+    const savedHours = Math.round((+rRep.value + +rProc.value) * 0.5 * 12);
+    hrs.textContent = savedHours.toLocaleString('en-CA');
+    dollars.textContent = (savedHours * +rRate.value).toLocaleString('en-CA');
+  }
+  function applyCalcPersona(sb) {
+    const p = CALC[sb ? 'sb' : 'mm'];
+    [['rep', rRep], ['proc', rProc], ['rate', rRate]].forEach(([k, s]) => {
+      s.min = p[k].min; s.max = p[k].max; s.step = p[k].step; s.value = p[k].val;
+    });
+    recalc();
+  }
+  [rRep, rProc, rRate].forEach(s => s.addEventListener('input', recalc));
+  recalc();
+
+  // persona toggle (pill, sidebar)
+  const segMM = document.getElementById('segMM'), segSB = document.getElementById('segSB');
+  function setPersona(sb) {
+    document.body.classList.toggle('sb', sb);
+    segSB.classList.toggle('on', sb);
+    segMM.classList.toggle('on', !sb);
+    applyCalcPersona(sb);
+    document.body.classList.remove('switched');
+    void document.body.offsetWidth;
+    document.body.classList.add('switched');
+  }
+  segMM.addEventListener('click', () => setPersona(false));
+  segSB.addEventListener('click', () => setPersona(true));
+
+  // challenges accordion: one open at a time
+  document.querySelectorAll('.acc-head').forEach(head => head.addEventListener('click', () => {
+    const item = head.parentElement, body = item.querySelector('.acc-body'), wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item.open').forEach(o => {
+      o.classList.remove('open');
+      o.querySelector('.acc-body').style.maxHeight = '0';
+    });
+    if (!wasOpen) {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }));
+
+  // scroll-spy
+  const links = [...document.querySelectorAll('#spy a')];
+  const blocks = links.map(a => document.querySelector(a.getAttribute('href')));
+  const spy = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, {rootMargin: '-35% 0px -55% 0px'});
+  blocks.forEach(b => b && spy.observe(b));
+
+  // timeline draw
+  const grid = document.getElementById('howGrid');
+  if (reduce) { grid.classList.add('drawn'); }
+  else {
+    const tio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { grid.classList.add('drawn'); tio.unobserve(grid); }
+    }), {threshold: .4});
+    tio.observe(grid);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 06: Corporate Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#44546E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+  h1,h2,h3,h4{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  a{text-decoration:none;color:var(--blue)}
+  a:hover{text-decoration:underline}
+
+  /* utility bar + nav */
+  .util{background:var(--navy);color:#C7D5F2;font-size:13px}
+  .util .wrap{display:flex;justify-content:flex-end;gap:28px;height:38px;align-items:center}
+  .util a{color:#fff;text-decoration:none}
+  header{background:#fff;border-bottom:3px solid var(--navy);position:sticky;top:0;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .nav img{height:48px}
+  .nav ul{display:flex;gap:0;list-style:none;height:100%}
+  .nav ul a{color:var(--navy);font-weight:600;font-size:15px;display:flex;align-items:center;height:78px;padding:0 18px;border-bottom:3px solid transparent;margin-bottom:-3px;text-decoration:none}
+  .nav ul a:hover{border-bottom-color:var(--blue);color:var(--blue)}
+  .btn{display:inline-block;background:var(--blue);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;text-decoration:none}
+  .btn:hover{background:var(--navy);text-decoration:none}
+  .btn.outline{background:transparent;border:2px solid #fff;color:#fff}
+  .btn.outline:hover{background:rgba(255,255,255,.12)}
+
+  /* hero: photo with navy overlay panel */
+  .hero{position:relative;min-height:520px;display:flex;align-items:center;color:#fff;
+    background:linear-gradient(rgba(8,30,72,.78),rgba(8,30,72,.78)),url('https://picsum.photos/seed/intiedge-corporate-lobby/1900/900') center/cover}
+  .hero .wrap{width:100%}
+  .hero .panel{max-width:640px;padding:64px 0}
+  .hero h1{color:#fff;font-size:clamp(30px,3.8vw,46px);line-height:1.18;font-weight:700}
+  .hero p{margin:18px 0 30px;font-size:18px;color:#D7E2F7;max-width:36em}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+
+  section{padding:80px 0}
+  h2{font-size:clamp(24px,2.8vw,34px);line-height:1.2}
+  .rule{width:64px;height:4px;background:var(--blue);margin:18px 0 0}
+  .lede{color:var(--muted);font-size:17px;max-width:64ch;margin-top:18px}
+
+  /* challenges: two columns of listed items */
+  .challenges{background:var(--mist)}
+  .ch-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;margin-top:40px}
+  .ch{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:16px;color:var(--ink)}
+  .ch::before{content:"";flex-shrink:0;width:22px;height:22px;margin-top:2px;background:var(--teal);
+    -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="black" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm45.66 85.66l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32Z"/></svg>') center/contain no-repeat;
+    mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="black" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm45.66 85.66l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32Z"/></svg>') center/contain no-repeat}
+
+  /* services: formal three columns with header rules (varied via lead panel above) */
+  .svc-intro{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+  .svc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px}
+  .svc h3{font-size:18px;padding-bottom:14px;border-bottom:2px solid var(--navy);margin-bottom:16px}
+  .svc.f h3{border-color:var(--navy)}
+  .svc.o h3{border-color:var(--teal)}
+  .svc.t h3{border-color:var(--blue)}
+  .svc ul{list-style:none}
+  .svc li{padding:8px 0;font-size:15px;color:var(--muted)}
+  .svc li b{color:var(--ink);font-weight:600}
+
+  /* governance band */
+  .gov{background:var(--navy);color:#fff;padding:72px 0}
+  .gov .wrap{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center}
+  .gov h2{color:#fff}
+  .gov p{color:#C7D5F2;margin-top:16px;font-size:16.5px;max-width:54ch}
+  .gov .facts{border-left:1px solid rgba(255,255,255,.25);padding-left:40px;display:grid;gap:22px}
+  .gov .facts div b{font-family:Montserrat,sans-serif;font-size:30px;display:block;color:#fff}
+  .gov .facts div span{color:#A9BBDE;font-size:14.5px}
+
+  /* approach: numbered formal table-like rows */
+  .ap-rows{margin-top:48px;border-top:2px solid var(--navy)}
+  .ap{display:grid;grid-template-columns:2.5fr 1.5fr 6fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .ap b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:17px}
+  .ap i{font-style:normal;color:var(--teal);font-weight:600;font-size:14px}
+  .ap p{color:var(--muted);font-size:15px}
+
+  /* about */
+  .about{background:var(--mist)}
+  .about .wrap{display:grid;grid-template-columns:4fr 8fr;gap:56px;align-items:center}
+  .about img{width:100%;height:400px;object-fit:cover;object-position:top}
+  .about .role{color:var(--teal);font-weight:700;font-family:Montserrat,sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+  .about p{color:var(--muted);margin-top:14px;max-width:60ch}
+  .about .creds{margin-top:20px;font-size:14.5px;color:var(--ink)}
+  .about .creds span{display:inline-block;margin:0 14px 8px 0;padding-right:14px;border-right:1px solid var(--line)}
+  .about .creds span:last-child{border-right:none}
+
+  /* cta */
+  .cta{background:#fff;border-top:1px solid var(--line)}
+  .cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+  .cta h2{max-width:18em}
+  .cta p{color:var(--muted);margin-top:10px;max-width:50ch}
+
+  footer{background:var(--navy);color:#A9BBDE;padding:48px 0;font-size:14px}
+  footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px}
+  footer img{height:52px;margin-bottom:16px}
+  footer h4{color:#fff;font-size:14px;margin-bottom:12px;letter-spacing:.04em}
+  footer ul{list-style:none}
+  footer li{padding:4px 0}
+  footer a{color:#D7E2F7;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  footer .base{border-top:1px solid rgba(255,255,255,.18);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  @media (max-width: 920px){
+    .nav ul{display:none}
+    .svc-intro,.gov .wrap,.about .wrap{grid-template-columns:1fr;gap:36px}
+    .svc-cols{grid-template-columns:1fr}
+    .ch-grid{grid-template-columns:1fr}
+    .ap{grid-template-columns:1fr;gap:4px}
+    footer .wrap{grid-template-columns:1fr}
+    .gov .facts{border-left:none;padding-left:0}
+  }
+</style>
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <span>1-226-678-3324</span>
+    <a href="mailto:shelly@intiedge.com">shelly@intiedge.com</a>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</div>
+<header>
+  <div class="wrap nav">
+    <a href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why IntiEdge</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a class="btn" href="#contact">Book a Discovery Call</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="panel">
+      <h1>Helping growing organizations improve profitability, strengthen operations, and build scalable systems.</h1>
+      <p>Finance leadership, operational excellence, and AI-enabled business transformation for CEOs, CFOs, boards, and owners.</p>
+      <div class="actions">
+        <a class="btn" href="#contact">Book a Discovery Call</a>
+        <a class="btn outline" href="#services">Our services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="challenges">
+  <div class="wrap">
+    <h2>Is your organization facing these challenges?</h2>
+    <div class="rule"></div>
+    <div class="ch-grid">
+      <div class="ch">Limited visibility into performance and profitability</div>
+      <div class="ch">Inefficient processes and manual workflows</div>
+      <div class="ch">Growth outpacing systems and controls</div>
+      <div class="ch">Technology investments not delivering expected value</div>
+      <div class="ch">Leadership gaps and resource constraints</div>
+      <div class="ch">Financial reports taking too long to prepare</div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="svc-intro">
+      <div>
+        <h2>Our services</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="lede">IntiEdge Partners works alongside leadership teams to identify opportunities, solve operational challenges, and implement practical solutions that create measurable results.</p>
+    </div>
+    <div class="svc-cols">
+      <div class="svc f">
+        <h3>Finance Leadership &amp; CFO Advisory</h3>
+        <ul>
+          <li><b>Fractional CFO</b> and interim controller leadership</li>
+          <li>Financial reporting &amp; analysis</li>
+          <li>Budgeting &amp; forecasting</li>
+          <li>Cash flow management</li>
+          <li>KPI development &amp; dashboards</li>
+          <li>Audit &amp; governance support</li>
+        </ul>
+      </div>
+      <div class="svc o">
+        <h3>Operations &amp; Process Improvement</h3>
+        <ul>
+          <li><b>Process mapping</b> and optimization</li>
+          <li>Workflow redesign</li>
+          <li>Organizational effectiveness</li>
+          <li>Performance management</li>
+          <li>Operational reporting</li>
+          <li>Business scalability</li>
+        </ul>
+      </div>
+      <div class="svc t">
+        <h3>Technology &amp; AI Enablement</h3>
+        <ul>
+          <li><b>AI readiness</b> assessment</li>
+          <li>Reporting automation</li>
+          <li>Dashboard development</li>
+          <li>ERP &amp; systems optimization</li>
+          <li>Data &amp; process integration</li>
+          <li>Practical AI adoption strategies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gov" id="why">
+  <div class="wrap">
+    <div>
+      <h2>Advice you can hold accountable</h2>
+      <p>Unlike many consultants who provide recommendations and leave, IntiEdge combines strategic advice with hands-on execution. We bring more than 15 years of leadership across finance, operations, HR, technology, and business transformation, with the governance discipline your board expects.</p>
+      <p>Engagements are structured, documented, and measured: clear scope, defined deliverables, and reporting your leadership team can rely on.</p>
+    </div>
+    <div class="facts">
+      <div><b>15+ years</b><span>senior finance and operations leadership</span></div>
+      <div><b>6 industries</b><span>SaaS, logistics, manufacturing, construction, retail, professional services</span></div>
+      <div><b>10 entities</b><span>unified under one reporting and governance framework</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <h2>Our engagement approach</h2>
+    <div class="rule"></div>
+    <div class="ap-rows">
+      <div class="ap"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Stakeholder interviews, current state assessment, process mapping, data analysis, opportunity identification, and a findings report.</p></div>
+      <div class="ap"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state design, strategic roadmap, KPI framework, initiative prioritization, quick wins plan, and recommendations report.</p></div>
+      <div class="ap"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Process improvements, dashboards and reporting, automation opportunities, training and knowledge transfer, and change management support.</p></div>
+      <div class="ap"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Performance reviews, KPI monitoring, continuous improvement, process refinement, and growth enablement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <img src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+    <div>
+      <div class="role">Founder &amp; Principal</div>
+      <h2>Shelly Moffat, EMBA</h2>
+      <p>Executive MBA graduate of Ivey Business School and senior finance and operations leader. Shelly's recent track record includes director of finance for a multi-entity SaaS group, financial controller across a ten-company construction and property group, and controller in manufacturing, with consistent, measurable improvements in reporting, efficiency, and governance.</p>
+      <div class="creds">
+        <span>EMBA, Ivey Business School</span>
+        <span>CHRL</span>
+        <span>PCP</span>
+        <span>IFRS reporting environments</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Start with a complimentary discovery meeting</h2>
+      <p>A practical, 30-minute discussion about your current challenges, priorities, and opportunities for improvement. No obligation.</p>
+    </div>
+    <a class="btn" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="assets/logo-white-tight.png" alt="IntiEdge Partners">
+      <div>Clarity. Strategy. Execution. Results that matter.</div>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Finance Leadership</a></li>
+        <li><a href="#services">Operations &amp; Process</a></li>
+        <li><a href="#services">Technology &amp; AI</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:shelly@intiedge.com">shelly@intiedge.com</a></li>
+        <li>1-226-678-3324</li>
+        <li>London, Ontario, Canada</li>
+        <li><a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap base">
+    <span>IntiEdge Partners Inc.</span>
+    <span>www.intiedge.com</span>
+  </div>
+</footer>
+
+</body>
+</html>

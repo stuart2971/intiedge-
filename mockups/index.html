@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Website Style Mockups - Round 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --mist:#F5F7FA; --line:#DCE5F0; --muted:#44546E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--mist);line-height:1.6;font-size:17px}
+  h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  a{text-decoration:none}
+
+  .top{background:#fff;border-bottom:1px solid var(--line);padding:48px 0}
+  .top .wrap{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+  .top img{height:84px}
+  .top h1{font-size:31px;letter-spacing:-.01em}
+  .top p{color:var(--muted);margin-top:8px;max-width:68ch;font-size:16.5px}
+
+  h2.sect{margin:52px 0 0;font-size:21px}
+  p.sect-sub{color:var(--muted);font-size:16px;margin-top:6px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:26px 0 16px}
+  .card{background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .25s,box-shadow .25s;display:block}
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(11,42,99,.12)}
+  .card.star{border:2px solid var(--navy)}
+  .card .swatch{height:8px;display:flex}
+  .card .swatch i{flex:1}
+  .card .body{padding:26px 30px 30px}
+  .card h3{font-size:19px;display:flex;align-items:baseline;gap:12px}
+  .card h3 .no{color:var(--teal);font-size:14px;font-weight:700}
+  .card h3 .flag{margin-left:auto;font-size:13.5px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--navy);padding:5px 12px;text-transform:uppercase}
+  .card p{color:var(--muted);font-size:15.5px;margin-top:10px}
+  .card .spec{margin-top:14px;font-size:14.5px;color:var(--navy);font-weight:600}
+  .card .spec b{color:var(--blue)}
+
+  .note{background:#fff;border:1px solid var(--line);padding:26px 30px;margin:44px 0 60px;font-size:16px;color:var(--muted)}
+  .note b{color:var(--navy)}
+
+  @media (max-width: 860px){.grid{grid-template-columns:1fr}.top img{height:64px}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <img src="assets/logo-tight.png" alt="IntiEdge Partners">
+    <div>
+      <h1>Website style mockups, round 3</h1>
+      <p>Every round-3 page is built on the same three core pieces you picked: the audience choice (mid-market vs. small business) as the main event, a savings calculator that retunes itself to that choice, and the components you liked from rounds 1 and 2. Typography is larger throughout. The difference between them is how the choice is staged.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <h2 class="sect">Round 3: persona-driven, calculator-equipped</h2>
+  <p class="sect-sub">Pick the staging you like; the machinery underneath is identical and ready for the real build.</p>
+  <div class="grid">
+
+    <a class="card star" href="30-flagship.html">
+      <div class="swatch"><i style="background:#0B2A63"></i><i style="background:#118DA3"></i><i style="background:#148EEA"></i></div>
+      <div class="body">
+        <h3><span class="no">30</span>Flagship <span class="flag">Start here</span></h3>
+        <p>The recommended assembly: two big choice cards open the page, then everything you flagged in order: skyline band, count-up stats, dash columns, adaptive calculator, drawing timeline, navy panel, split CTA.</p>
+        <div class="spec">Choice staging: <b>two selectable cards in the hero</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="21-choice-hero.html">
+      <div class="swatch"><i style="background:#0B2A63"></i><i style="background:#F5F7FA"></i><i style="background:#148EEA"></i></div>
+      <div class="body">
+        <h3><span class="no">21</span>Choice Hero</h3>
+        <p>A segmented toggle sits above the headline; choosing rewrites the headline, photo, services, calculator, and CTA copy.</p>
+        <div class="spec">Choice staging: <b>toggle above the headline</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="22-two-doors.html">
+      <div class="swatch"><i style="background:#081A3C"></i><i style="background:#FFFFFF"></i><i style="background:#148EEA"></i></div>
+      <div class="body">
+        <h3><span class="no">22</span>Two Doors</h3>
+        <p>The boldest take: a full-screen split entry. Click your door and the page scrolls into a version written for you, with a compact switcher in the nav.</p>
+        <div class="spec">Choice staging: <b>full-screen split entry</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="23-report-sidebar-pro.html">
+      <div class="swatch"><i style="background:#FFFFFF"></i><i style="background:#DCE5F0"></i><i style="background:#0B2A63"></i></div>
+      <div class="body">
+        <h3><span class="no">23</span>Report Sidebar Pro</h3>
+        <p>The sidebar navigation you liked, upgraded: the choice lives at the top of the sidebar, chapters track your scroll, and "Your Numbers" is its own chapter.</p>
+        <div class="spec">Choice staging: <b>sidebar, with scroll-spy chapters</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="24-calculator-hero.html">
+      <div class="swatch"><i style="background:#F5F7FA"></i><i style="background:#0B2A63"></i><i style="background:#148EEA"></i></div>
+      <div class="body">
+        <h3><span class="no">24</span>Calculator Hero</h3>
+        <p>The calculator IS the hero. The choice toggle sits directly above the sliders, so visitors interact within seconds of landing.</p>
+        <div class="spec">Choice staging: <b>inside the hero calculator card</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="25-executive-persona.html">
+      <div class="swatch"><i style="background:#0B2A63"></i><i style="background:#FFFFFF"></i><i style="background:#148EEA"></i></div>
+      <div class="body">
+        <h3><span class="no">25</span>Executive Persona</h3>
+        <p>Style 01's executive frame with a navy persona bar pinned under the nav, so the choice follows you down the page.</p>
+        <div class="spec">Choice staging: <b>sticky bar under the nav</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="26-journey-persona.html">
+      <div class="swatch"><i style="background:#0B2A63"></i><i style="background:#118DA3"></i><i style="background:#148EEA"></i></div>
+      <div class="body">
+        <h3><span class="no">26</span>Journey Persona</h3>
+        <p>Choose who you are, then scroll through the four engagement phases stacking like chapters, each written for your choice, ending at the calculator.</p>
+        <div class="spec">Choice staging: <b>toggle + scroll-stack storytelling</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="27-navy-panels-persona.html">
+      <div class="swatch"><i style="background:#0B2A63"></i><i style="background:#10518F"></i><i style="background:#148EEA"></i></div>
+      <div class="body">
+        <h3><span class="no">27</span>Navy Panels Persona</h3>
+        <p>The rounded photo + navy panel card system carrying the whole page, with a pill toggle in the hero and the calculator in a matching panel.</p>
+        <div class="spec">Choice staging: <b>pill toggle, rounded panel system</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="28-results-persona.html">
+      <div class="swatch"><i style="background:#0B2A63"></i><i style="background:#148EEA"></i><i style="background:#FFFFFF"></i></div>
+      <div class="body">
+        <h3><span class="no">28</span>Results Persona</h3>
+        <p>Proof-first: the hero stat, case stories, and copy re-aim themselves at your choice. Ticker numbers are now big. Cases expand on click.</p>
+        <div class="spec">Choice staging: <b>toggle in the navy hero</b></div>
+      </div>
+    </a>
+
+    <a class="card" href="29-swiss-persona.html">
+      <div class="swatch"><i style="background:#FFFFFF"></i><i style="background:#DCE5F0"></i><i style="background:#0B2A63"></i></div>
+      <div class="body">
+        <h3><span class="no">29</span>Swiss Persona</h3>
+        <p>The quiet minimal take: an understated "Reading as:" switcher, expanding numbered services, and a hairline-styled calculator.</p>
+        <div class="spec">Choice staging: <b>understated text switcher</b></div>
+      </div>
+    </a>
+
+  </div>
+
+  <h2 class="sect">Earlier rounds, kept for reference</h2>
+  <div class="grid">
+    <a class="card" href="11-signature-blend.html"><div class="swatch"><i style="background:#0B2A63"></i><i style="background:#FFFFFF"></i><i style="background:#148EEA"></i></div><div class="body"><h3><span class="no">R2</span>Styles 11 to 20</h3><p>Round 2: signature blend, tabs, accordion, expandable cases, scroll-stack, the original estimator and audience toggle, hover panels, and the sidebar report. Links: 11 through 20 in this folder.</p></div></a>
+    <a class="card" href="01-executive-authority.html"><div class="swatch"><i style="background:#0B2A63"></i><i style="background:#F5F7FA"></i><i style="background:#118DA3"></i></div><div class="body"><h3><span class="no">R1</span>Styles 01, 06, 08, 10</h3><p>Your round-1 shortlist: Executive Authority, Corporate Trust, Results-Led, and Minimal Swiss, unchanged for comparison.</p></div></a>
+  </div>
+
+  <div class="note">
+    <b>Notes for review:</b> all round-3 pages share one persona system (the choice rewrites headlines, pain points, service copy, calculator ranges and defaults, and CTA tone) and one calculator engine (mid-market defaults: 60 reporting + 100 processing hours at $55/hr; small business defaults: 20 + 30 hours at $40/hr; both assume a conservative 50% reduction). Photography other than Shelly's headshot is placeholder. Body text is 17px minimum and stat captions 16.5px+ throughout, per your feedback on small type.
+  </div>
+</div>
+
+</body>
+</html>

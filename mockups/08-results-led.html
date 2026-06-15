@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 08: Results-Led</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#4A5A74;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+  h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  a{text-decoration:none;color:var(--blue)}
+
+  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .nav img{height:44px}
+  .nav ul{display:flex;gap:32px;list-style:none}
+  .nav ul a{color:var(--navy);font-weight:600;font-size:15px}
+  .nav ul a:hover{color:var(--blue)}
+  .btn{display:inline-block;background:var(--blue);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;padding:14px 30px;transition:background .25s,transform .15s}
+  .btn:hover{background:var(--navy)}
+  .btn:active{transform:translateY(1px)}
+
+  /* hero: number-forward, asymmetric */
+  .hero{padding:92px 0 0;background:var(--navy);color:#fff;overflow:hidden}
+  .hero .top{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center;padding-bottom:84px}
+  .hero h1{color:#fff;font-size:clamp(36px,4.6vw,58px);line-height:1.08;letter-spacing:-.02em;font-weight:900}
+  .hero h1 span{color:var(--blue)}
+  .hero p{margin:22px 0 34px;font-size:18.5px;color:#B9C7E2;max-width:30em}
+  .hero .proof{background:#fff;color:var(--ink);padding:38px;border-top:6px solid var(--blue)}
+  .hero .proof b{font-family:Montserrat,sans-serif;font-size:60px;font-weight:900;color:var(--navy);line-height:1;display:block}
+  .hero .proof .what{font-size:15.5px;color:var(--muted);margin-top:10px;max-width:30ch}
+  .hero .proof .src{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+  .hero .proof .src b{font-size:14px;color:var(--navy);font-family:Montserrat,sans-serif;font-weight:700;display:inline}
+
+  /* results ticker row */
+  .ticker{background:#08214F;border-top:1px solid rgba(255,255,255,.12)}
+  .ticker .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
+  .ticker .t{padding:26px 28px;border-left:1px solid rgba(255,255,255,.12)}
+  .ticker .t:first-child{border-left:none}
+  .ticker b{font-family:Montserrat,sans-serif;color:#fff;font-size:28px;font-weight:800;display:block;line-height:1.15}
+  .ticker span{color:#9FB1D6;font-size:14px}
+
+  section{padding:88px 0}
+  h2{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.015em;line-height:1.15}
+  .lede{color:var(--muted);font-size:17.5px;max-width:60ch;margin-top:14px}
+
+  /* outcomes: case rows with big stat left */
+  .cases .case{display:grid;grid-template-columns:3fr 6fr 3fr;gap:48px;align-items:center;padding:42px 0;border-bottom:1px solid var(--line)}
+  .cases .case:first-of-type{border-top:2px solid var(--navy);margin-top:48px}
+  .case .stat{font-family:Montserrat,sans-serif;font-size:72px;font-weight:900;color:var(--blue);line-height:1;letter-spacing:-.03em}
+  .case .stat small{font-size:26px;font-weight:800;color:var(--teal);display:block;letter-spacing:0;margin-top:6px}
+  .case h3{font-size:20px;margin-bottom:8px}
+  .case p{color:var(--muted);font-size:15.5px;max-width:52ch}
+  .case .sector{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:14px;justify-self:end;text-align:right;border-right:3px solid var(--teal);padding-right:16px}
+
+  /* how: 4 phases compact horizontal with connector */
+  .how{background:var(--mist)}
+  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;position:relative}
+  .how-grid::before{content:"";position:absolute;top:10px;left:6%;right:6%;height:2px;background:var(--line)}
+  .how .st{padding:0 22px;position:relative}
+  .how .st::before{content:"";width:20px;height:20px;border-radius:50%;background:#fff;border:5px solid var(--blue);display:block;margin-bottom:18px;position:relative}
+  .how .st:nth-child(2)::before{border-color:var(--teal)}
+  .how .st:nth-child(3)::before{border-color:var(--navy)}
+  .how .st:nth-child(4)::before{border-color:var(--blue)}
+  .how b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:16.5px;display:block}
+  .how i{font-style:normal;color:var(--teal);font-weight:600;font-size:13px;display:block;margin:3px 0 8px}
+  .how p{font-size:14px;color:var(--muted)}
+  .how .pledge{margin-top:52px;background:#fff;border-left:5px solid var(--blue);padding:26px 32px;font-size:17px;color:var(--navy);font-weight:600;max-width:760px}
+
+  /* services compact: tabs-like 3 columns with rule */
+  .svcs .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:48px}
+  .svcs h3{font-size:18px;color:var(--navy);display:flex;align-items:baseline;gap:12px}
+  .svcs h3::before{content:"";width:34px;height:4px;flex-shrink:0;background:var(--blue);transform:translateY(-4px)}
+  .svcs .cols > div:nth-child(2) h3::before{background:var(--teal)}
+  .svcs .cols > div:nth-child(3) h3::before{background:var(--navy)}
+  .svcs p{color:var(--muted);font-size:15px;margin-top:12px}
+
+  /* about: stat-anchored */
+  .about{background:var(--navy);color:#fff}
+  .about .wrap{display:grid;grid-template-columns:7fr 4fr;gap:64px;align-items:center}
+  .about h2{color:#fff}
+  .about p{color:#B9C7E2;margin-top:16px;max-width:54ch;font-size:16.5px}
+  .about img{width:100%;height:420px;object-fit:cover;object-position:top}
+
+  /* cta */
+  .cta{text-align:center;padding:100px 0}
+  .cta h2{font-size:clamp(30px,4.4vw,52px)}
+  .cta p{color:var(--muted);font-size:18px;margin:16px auto 36px;max-width:46ch}
+
+  footer{background:#081E48;color:#9FB1D6;padding:48px 0;font-size:14.5px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer img{height:52px}
+  footer a{color:#fff}
+
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width: 980px){
+    .nav ul{display:none}
+    .hero .top{grid-template-columns:1fr;gap:40px}
+    .ticker .wrap{grid-template-columns:1fr}
+    .ticker .t{border-left:none;border-top:1px solid rgba(255,255,255,.12)}
+    .cases .case{grid-template-columns:1fr;gap:14px}
+    .case .sector{justify-self:start;text-align:left;border-right:none;border-left:3px solid var(--teal);padding:0 0 0 16px}
+    .how-grid{grid-template-columns:1fr;gap:30px}
+    .how-grid::before{display:none}
+    .svcs .cols{grid-template-columns:1fr}
+    .about .wrap{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <ul>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About Shelly</a></li>
+    </ul>
+    <a class="btn" href="#contact">Book a Discovery Call</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap top">
+    <div class="rv">
+      <h1>Results that show up in <span>your numbers</span>, not just in a report.</h1>
+      <p>Finance leadership, operational excellence, and AI-enabled transformation, implemented hands-on and measured honestly.</p>
+      <a class="btn" href="#contact">Book a Discovery Call</a>
+    </div>
+    <div class="proof rv">
+      <b>65%</b>
+      <div class="what">reduction in invoicing cycle time, delivered through finance automation</div>
+      <div class="src">Led by <b>Shelly Moffat</b> as Director of Finance, multi-entity SaaS group</div>
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="wrap">
+      <div class="t rv"><b>50% faster</b><span>accounts payable processing through workflow automation</span></div>
+      <div class="t rv"><b>14% lower OPEX</b><span>cost reduction program in manufacturing</span></div>
+      <div class="t rv"><b>10 companies</b><span>unified under one reporting and governance framework</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cases" id="results">
+  <div class="wrap">
+    <h2 class="rv">Outcomes from the work</h2>
+    <p class="lede rv">Numbers from engagements Shelly has led inside operating businesses, the same playbook IntiEdge brings to yours.</p>
+    <div class="case">
+      <div class="stat rv">65<small>% faster invoicing</small></div>
+      <div class="rv">
+        <h3>Automation that funded its own transformation</h3>
+        <p>Unified forecasting and reporting data, automated invoicing and AP workflows, and reallocated the savings to fund further improvement.</p>
+      </div>
+      <div class="sector rv">SaaS<br>Multi-entity group</div>
+    </div>
+    <div class="case">
+      <div class="stat rv">10<small>entities, one view</small></div>
+      <div class="rv">
+        <h3>One reporting framework for a ten-company group</h3>
+        <p>Designed unified financial reporting and Power BI dashboards across ten subsidiaries, strengthening decisions, governance, and audit readiness.</p>
+      </div>
+      <div class="sector rv">Construction<br>Distribution &amp; property</div>
+    </div>
+    <div class="case">
+      <div class="stat rv">14<small>% OPEX reduction</small></div>
+      <div class="rv">
+        <h3>Cost discipline that restored control</h3>
+        <p>Rebuilt the accounting structure and SOPs, directed cost reduction initiatives, and digitized internal workflows across HR and finance.</p>
+      </div>
+      <div class="sector rv">Manufacturing<br>Ingersoll, Ontario</div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="approach">
+  <div class="wrap">
+    <h2 class="rv">How we get there</h2>
+    <div class="how-grid">
+      <div class="st rv"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Interviews, current state assessment, process mapping, and opportunity identification.</p></div>
+      <div class="st rv"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state, roadmap, KPI framework, and a quick wins plan.</p></div>
+      <div class="st rv"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Improvements, dashboards, automation, training, and change support.</p></div>
+      <div class="st rv"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Performance reviews, KPI monitoring, and continuous refinement.</p></div>
+    </div>
+    <div class="pledge rv">You will see measurable early wins within the first 30 to 60 days, and improvements that are sustained and scaled over time.</div>
+  </div>
+</section>
+
+<section class="svcs" id="services">
+  <div class="wrap">
+    <h2 class="rv">Where we focus</h2>
+    <div class="cols">
+      <div class="rv">
+        <h3>Finance Leadership</h3>
+        <p>Fractional CFO and interim controller leadership: reporting and analysis, budgeting and forecasting, cash flow management, KPI development, and governance support.</p>
+      </div>
+      <div class="rv">
+        <h3>Operations &amp; Process</h3>
+        <p>Process mapping and optimization, workflow redesign, organizational effectiveness, performance management, and the discipline to scale cleanly.</p>
+      </div>
+      <div class="rv">
+        <h3>Technology &amp; AI</h3>
+        <p>AI readiness, reporting automation, dashboard development, ERP and systems optimization, and practical adoption strategies that pay for themselves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="rv">
+      <h2>The operator behind the numbers</h2>
+      <p>Shelly Moffat, EMBA, is an Executive MBA graduate of Ivey Business School with 15+ years of senior finance and operations leadership across SaaS, logistics, manufacturing, construction, retail, and professional services.</p>
+      <p>Every result on this page comes from work she personally led: as director of finance, controller, and operations lead inside real, growing businesses.</p>
+    </div>
+    <img class="rv" src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2 class="rv">What would these results look like in your business?</h2>
+    <p class="rv">Find out in a complimentary 30-minute discovery call. No obligation, no pressure.</p>
+    <a class="btn rv" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-white-tight.png" alt="IntiEdge Partners">
+    <div>shelly@intiedge.com &nbsp;|&nbsp; 1-226-678-3324 &nbsp;|&nbsp; London, Ontario, Canada</div>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold: .15});
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>

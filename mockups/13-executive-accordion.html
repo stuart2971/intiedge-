@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntiEdge Partners | Style 13: Executive Accordion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A63; --teal:#118DA3; --blue:#148EEA;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F5F7FA; --line:#DCE5F0; --muted:#44546E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Source Sans 3",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+  h1,h2,h3,h4{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  a{text-decoration:none;color:var(--blue)}
+
+  .util{background:var(--navy);color:#C7D5F2;font-size:13px}
+  .util .wrap{display:flex;justify-content:flex-end;gap:28px;height:38px;align-items:center}
+  .util a{color:#fff}
+  header{background:#fff;border-bottom:3px solid var(--navy);position:sticky;top:0;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .nav img{height:48px}
+  .nav ul{display:flex;list-style:none;height:100%}
+  .nav ul a{color:var(--navy);font-weight:600;font-size:15px;display:flex;align-items:center;height:78px;padding:0 18px;border-bottom:3px solid transparent;margin-bottom:-3px}
+  .nav ul a:hover{border-bottom-color:var(--blue);color:var(--blue)}
+  .btn{display:inline-block;background:var(--blue);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;transition:background .25s}
+  .btn:hover{background:var(--navy)}
+  .btn.outline{background:transparent;border:2px solid #fff;color:#fff}
+  .btn.outline:hover{background:rgba(255,255,255,.12)}
+
+  .hero{position:relative;min-height:520px;display:flex;align-items:center;color:#fff;overflow:hidden;
+    background:linear-gradient(rgba(8,30,72,.8),rgba(8,30,72,.8)),url('https://picsum.photos/id/430/1900/900') center/cover}
+  .hero .panel{max-width:660px;padding:72px 0}
+  .hero h1{color:#fff;font-size:clamp(30px,3.8vw,46px);line-height:1.18;font-weight:700}
+  .hero p{margin:18px 0 30px;font-size:18px;color:#D7E2F7;max-width:36em}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+  @media (prefers-reduced-motion: no-preference){
+    .hero .panel > *{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.16,1,.3,1) forwards}
+    .hero p{animation-delay:.12s}
+    .hero .actions{animation-delay:.24s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+
+  section{padding:88px 0}
+  h2{font-size:clamp(24px,2.8vw,34px);line-height:1.2}
+  .rule{width:64px;height:4px;background:var(--blue);margin:18px 0 0}
+  .lede{color:var(--muted);font-size:17px;max-width:64ch;margin-top:18px}
+
+  /* accordion challenges */
+  .acc{margin-top:48px;border-top:2px solid var(--navy);max-width:880px}
+  .acc-item{border-bottom:1px solid var(--line)}
+  .acc-head{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 4px;text-align:left}
+  .acc-head h3{font-size:17.5px;font-weight:600;color:var(--navy);transition:color .2s}
+  .acc-head:hover h3{color:var(--blue)}
+  .acc-head .x{flex-shrink:0;width:30px;height:30px;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;transition:border-color .25s,background .25s}
+  .acc-head .x::before,.acc-head .x::after{content:"";position:absolute;background:var(--navy);transition:transform .3s,background .25s}
+  .acc-head .x::before{width:12px;height:2px}
+  .acc-head .x::after{width:2px;height:12px}
+  .acc-item.open .acc-head .x{background:var(--navy);border-color:var(--navy)}
+  .acc-item.open .acc-head .x::before{background:#fff}
+  .acc-item.open .acc-head .x::after{transform:rotate(90deg);background:#fff;opacity:0}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.16,1,.3,1)}
+  @media (prefers-reduced-motion: reduce){.acc-body{transition:none}}
+  .acc-body .inner{padding:0 4px 26px;display:grid;grid-template-columns:auto 1fr;gap:16px;max-width:64ch}
+  .acc-body .inner::before{content:"";width:4px;background:var(--teal)}
+  .acc-body p{color:var(--muted);font-size:15.5px}
+  .acc-body p b{color:var(--navy)}
+
+  /* services columns (08) */
+  .svcs{background:var(--mist)}
+  .svcs .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:48px}
+  .svcs h3{font-size:18px;display:flex;align-items:baseline;gap:12px}
+  .svcs h3::before{content:"";width:34px;height:4px;flex-shrink:0;background:var(--blue);transform:translateY(-4px)}
+  .svcs .cols > div:nth-child(2) h3::before{background:var(--teal)}
+  .svcs .cols > div:nth-child(3) h3::before{background:var(--navy)}
+  .svcs p{color:var(--muted);font-size:15px;margin-top:12px}
+
+  /* governance band w/ counters */
+  .gov{background:var(--navy);color:#fff;padding:76px 0}
+  .gov .wrap{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center}
+  .gov h2{color:#fff}
+  .gov p{color:#C7D5F2;margin-top:16px;font-size:16.5px;max-width:54ch}
+  .gov .facts{border-left:1px solid rgba(255,255,255,.25);padding-left:40px;display:grid;gap:24px}
+  .gov .facts b{font-family:Montserrat,sans-serif;font-size:32px;display:block;color:#fff;font-variant-numeric:tabular-nums}
+  .gov .facts b em{font-style:normal;color:var(--blue)}
+  .gov .facts span{color:#A9BBDE;font-size:14.5px}
+
+  /* timeline */
+  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;position:relative}
+  .how-line{position:absolute;top:10px;left:6%;right:6%;height:2px;background:var(--line);overflow:hidden}
+  .how-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+  .how-grid.drawn .how-line i{width:100%}
+  .st{padding:0 22px;position:relative}
+  .st::before{content:"";width:20px;height:20px;border-radius:50%;background:#fff;border:5px solid var(--blue);display:block;margin-bottom:18px;position:relative}
+  .st:nth-child(3)::before{border-color:var(--teal)}
+  .st:nth-child(4)::before{border-color:var(--navy)}
+  .st:nth-child(5)::before{border-color:var(--blue)}
+  .st b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:16.5px;display:block}
+  .st i{font-style:normal;color:var(--teal);font-weight:600;font-size:13px;display:block;margin:3px 0 8px}
+  .st p{font-size:14px;color:var(--muted)}
+
+  /* about formal */
+  .about{background:var(--mist)}
+  .about .wrap{display:grid;grid-template-columns:4fr 8fr;gap:56px;align-items:center}
+  .about img{width:100%;height:400px;object-fit:cover;object-position:top}
+  .about .role{color:var(--teal);font-weight:700;font-family:Montserrat,sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+  .about p{color:var(--muted);margin-top:14px;max-width:60ch}
+  .about .creds{margin-top:20px;font-size:14.5px;color:var(--ink)}
+  .about .creds span{display:inline-block;margin:0 14px 8px 0;padding-right:14px;border-right:1px solid var(--line)}
+  .about .creds span:last-child{border-right:none}
+
+  .cta .wrap{display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:center}
+  .cta h2{max-width:18em}
+  .cta p{color:var(--muted);margin-top:10px;max-width:50ch}
+  .cta .actions{justify-self:end}
+
+  footer{background:var(--navy);color:#A9BBDE;padding:48px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer img{height:50px}
+  footer a{color:#D7E2F7}
+
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width: 920px){
+    .nav ul{display:none}
+    .gov .wrap,.about .wrap,.cta .wrap{grid-template-columns:1fr;gap:36px}
+    .svcs .cols{grid-template-columns:1fr}
+    .how-grid{grid-template-columns:1fr;gap:30px}
+    .how-line{display:none}
+    .gov .facts{border-left:none;padding-left:0}
+    .cta .actions{justify-self:start}
+  }
+</style>
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <span>1-226-678-3324</span>
+    <a href="mailto:shelly@intiedge.com">shelly@intiedge.com</a>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</div>
+<header>
+  <div class="wrap nav">
+    <a href="#top"><img src="assets/logo-tight.png" alt="IntiEdge Partners"></a>
+    <ul>
+      <li><a href="#challenges">Challenges</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a class="btn" href="#contact">Book a Discovery Call</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="panel">
+      <h1>Helping growing organizations improve profitability, strengthen operations, and build scalable systems.</h1>
+      <p>Finance leadership, operational excellence, and AI-enabled business transformation for CEOs, CFOs, boards, and owners.</p>
+      <div class="actions">
+        <a class="btn" href="#contact">Book a Discovery Call</a>
+        <a class="btn outline" href="#challenges">Sound familiar?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="challenges">
+  <div class="wrap">
+    <h2 class="rv">Is your organization facing these challenges?</h2>
+    <div class="rule rv"></div>
+    <p class="lede rv">Select any challenge to see how IntiEdge responds to it.</p>
+    <div class="acc rv">
+      <div class="acc-item">
+        <button class="acc-head"><h3>Financial reports take too long to prepare</h3><span class="x"></span></button>
+        <div class="acc-body"><div class="inner"><p><b>How IntiEdge responds:</b> we automate the reporting pipeline. In a recent role Shelly cut the invoicing cycle by 65% and AP processing by 50%, freeing the team for analysis instead of assembly.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h3>Limited visibility into performance and profitability</h3><span class="x"></span></button>
+        <div class="acc-body"><div class="inner"><p><b>How IntiEdge responds:</b> KPI frameworks and live dashboards built on your real data, like the unified Power BI reporting Shelly designed across a ten-company group.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h3>Growth is outpacing systems and controls</h3><span class="x"></span></button>
+        <div class="acc-body"><div class="inner"><p><b>How IntiEdge responds:</b> scalable processes, governance, and internal controls designed for the size you're becoming, not the size you were.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h3>Technology investments aren't delivering expected value</h3><span class="x"></span></button>
+        <div class="acc-body"><div class="inner"><p><b>How IntiEdge responds:</b> ERP and systems optimization plus practical AI adoption, prioritized by payback, with implementation rather than a recommendations deck.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h3>You need experienced leadership but aren't ready for a full-time executive</h3><span class="x"></span></button>
+        <div class="acc-body"><div class="inner"><p><b>How IntiEdge responds:</b> fractional CFO and interim controller engagements that flex with your needs: senior capability, part-time cost.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svcs" id="services">
+  <div class="wrap">
+    <h2 class="rv">Where we focus</h2>
+    <div class="rule rv"></div>
+    <div class="cols">
+      <div class="rv">
+        <h3>Finance Leadership</h3>
+        <p>Fractional CFO and interim controller leadership: reporting and analysis, budgeting and forecasting, cash flow management, KPI development, and governance support.</p>
+      </div>
+      <div class="rv">
+        <h3>Operations &amp; Process</h3>
+        <p>Process mapping and optimization, workflow redesign, organizational effectiveness, performance management, and the discipline to scale cleanly.</p>
+      </div>
+      <div class="rv">
+        <h3>Technology &amp; AI</h3>
+        <p>AI readiness, reporting automation, dashboard development, ERP and systems optimization, and practical adoption strategies that pay for themselves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gov" style="padding:76px 0">
+  <div class="wrap">
+    <div class="rv">
+      <h2>Advice you can hold accountable</h2>
+      <p>Unlike many consultants who provide recommendations and leave, IntiEdge combines strategic advice with hands-on execution, with the governance discipline your board expects. Engagements are structured, documented, and measured.</p>
+    </div>
+    <div class="facts rv">
+      <div><b><em><span class="n" data-count="15">0</span>+</em> years</b><span>senior finance and operations leadership</span></div>
+      <div><b><em><span class="n" data-count="6">0</span></em> industries</b><span>SaaS, logistics, manufacturing, construction, retail, professional services</span></div>
+      <div><b><em><span class="n" data-count="10">0</span></em> entities</b><span>unified under one reporting and governance framework</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <h2 class="rv">How we get there</h2>
+    <div class="rule rv"></div>
+    <div class="how-grid" id="howGrid">
+      <div class="how-line"><i></i></div>
+      <div class="st rv"><b>Discover &amp; Assess</b><i>Weeks 1 to 2</i><p>Interviews, current state assessment, process mapping, and opportunity identification.</p></div>
+      <div class="st rv"><b>Design &amp; Prioritize</b><i>Weeks 2 to 4</i><p>Future state, roadmap, KPI framework, and a quick wins plan.</p></div>
+      <div class="st rv"><b>Implement &amp; Enable</b><i>Months 2 to 4</i><p>Improvements, dashboards, automation, training, and change support.</p></div>
+      <div class="st rv"><b>Sustain &amp; Optimize</b><i>Ongoing</i><p>Performance reviews, KPI monitoring, and continuous refinement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <img class="rv" src="assets/shelly.jpg" alt="Shelly Moffat, Founder and Principal of IntiEdge Partners">
+    <div class="rv">
+      <div class="role">Founder &amp; Principal</div>
+      <h2>Shelly Moffat, EMBA</h2>
+      <p>Executive MBA graduate of Ivey Business School and senior finance and operations leader. Recent track record includes director of finance for a multi-entity SaaS group, financial controller across a ten-company construction and property group, and controller in manufacturing.</p>
+      <div class="creds">
+        <span>EMBA, Ivey Business School</span>
+        <span>CHRL</span>
+        <span>PCP</span>
+        <span>IFRS reporting environments</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <h2>The first conversation is always complimentary.</h2>
+      <p>Thirty minutes. No obligation, no pressure. A practical discussion about your current challenges, priorities, and opportunities.</p>
+    </div>
+    <div class="actions rv">
+      <a class="btn" href="mailto:shelly@intiedge.com">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-white-tight.png" alt="IntiEdge Partners">
+    <div>Clarity. Strategy. Execution. Results that matter.</div>
+    <a href="https://www.linkedin.com/in/shellymoffat/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold: .15});
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  }
+
+  // accordion
+  document.querySelectorAll('.acc-head').forEach(head => head.addEventListener('click', () => {
+    const item = head.parentElement, body = item.querySelector('.acc-body'), open = item.classList.contains('open');
+    document.querySelectorAll('.acc-item.open').forEach(o => {
+      o.classList.remove('open');
+      o.querySelector('.acc-body').style.maxHeight = '0';
+    });
+    if (!open) {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }));
+
+  // count-ups
+  function countUp(el) {
+    const target = +el.dataset.count, dur = 1400, t0 = performance.now();
+    function tick(t) {
+      const p = Math.min((t - t0) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const nums = document.querySelectorAll('.n');
+  if (reduce) { nums.forEach(el => el.textContent = el.dataset.count); }
+  else {
+    const cio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); }
+    }), {threshold: .6});
+    nums.forEach(el => cio.observe(el));
+  }
+
+  // timeline draw
+  const grid = document.getElementById('howGrid');
+  if (reduce) { grid.classList.add('drawn'); }
+  else {
+    const tio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { grid.classList.add('drawn'); tio.unobserve(grid); }
+    }), {threshold: .4});
+    tio.observe(grid);
+  }
+</script>
+</body>
+</html>
