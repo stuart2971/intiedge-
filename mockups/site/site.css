@@ -9,22 +9,39 @@ h1,h2,h3{font-family:Montserrat,Arial,sans-serif;color:var(--navy)}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:var(--blue)}
 
-/* brand wordmark treatment wherever "IntiEdge" appears in running text */
+/* brand wordmark treatment wherever "IntiEdge" appears in running text:
+   per-letter colours lifted straight from the logo */
 .brand{font-weight:700;white-space:nowrap}
-.brand .i{color:var(--navy)}
-.brand .e{color:var(--blue)}
+.brand > span{display:inline-block}
+.brand .i{color:#162C4A}
+.brand .e1{color:#057B86}
+.brand .e2{color:#0B849D}
+.brand .e3{color:#0C86B9}
+.brand .e4{color:#047AC9}
 /* keep the wordmark legible on the dark navy cards */
 .about-card .brand .i{color:#fff}
-.about-card .brand .e{color:#8FD8EC}
+.about-card .brand .e1,.about-card .brand .e2,.about-card .brand .e3,.about-card .brand .e4{color:#8FD8EC}
+/* a quiet left-to-right shimmer that draws the eye to the wordmark, then rests */
+@media (prefers-reduced-motion: no-preference){
+  .brand > span{animation:brandWave 5s ease-in-out infinite}
+  .brand .e1{animation-delay:.09s}
+  .brand .e2{animation-delay:.18s}
+  .brand .e3{animation-delay:.27s}
+  .brand .e4{animation-delay:.36s}
+  @keyframes brandWave{
+    0%,16%,100%{transform:translateY(0);filter:brightness(1)}
+    8%{transform:translateY(-2px);filter:brightness(1.16)}
+  }
+}
 
 .layout{display:grid;grid-template-columns:368px 1fr;min-height:100dvh;max-width:1600px;margin:0 auto}
 
 /* sidebar */
-aside{border-right:1px solid var(--line);padding:44px 30px 36px 56px;position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 45%,#E9F1FB 100%);overflow:hidden}
+aside{border-right:1px solid var(--line);padding:38px 30px 26px 56px;position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 45%,#E9F1FB 100%);overflow-x:hidden;overflow-y:auto}
 aside > :not(.aside-wave){position:relative;z-index:1}
 /* business-card wave: navy spine + bright-blue arc down the left edge of the sidebar */
 .aside-wave{position:absolute;left:0;top:0;height:100%;width:48px;z-index:0;pointer-events:none}
-aside .logo{display:flex;flex-direction:column;align-items:center;gap:14px}
+aside .logo{display:flex;flex-direction:column;align-items:center;gap:12px}
 aside .logo .logo-mark{height:118px;width:auto}
 aside .logo .logo-word{height:auto;width:210px}
 aside .persona{margin-top:40px}
@@ -33,11 +50,11 @@ aside .persona .q{font-family:Montserrat,sans-serif;font-weight:700;color:var(--
 .seg button{flex:1;font-family:Montserrat,sans-serif;font-weight:700;font-size:16.5px;color:var(--muted);background:none;border:none;border-radius:999px;cursor:pointer;padding:14px 6px;white-space:nowrap;transition:color .2s,background .25s,box-shadow .25s}
 .seg button:hover{color:var(--navy)}
 .seg button.on{background:var(--navy);color:#fff;box-shadow:0 6px 16px rgba(11,42,99,.28)}
-aside nav{margin-top:40px;display:grid;gap:3px}
-aside nav a{display:block;padding:14px 16px;color:var(--muted);font-weight:600;font-size:18.5px;border-left:3px solid transparent;transition:color .2s,border-color .2s,background .2s}
+aside nav{margin-top:28px;display:grid;gap:3px}
+aside nav a{display:block;padding:9px 16px;line-height:1.3;color:var(--muted);font-weight:600;font-size:18.5px;border-left:3px solid transparent;transition:color .2s,border-color .2s,background .2s}
 aside nav a:hover{color:var(--navy);background:var(--mist)}
 aside nav a.on{color:var(--navy);border-left-color:var(--blue);background:var(--mist)}
-aside .foot{margin-top:auto;padding-top:40px}
+aside .foot{margin-top:auto;padding-top:28px}
 .btn{display:inline-block;background:var(--navy);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;padding:17px 32px;transition:background .25s;text-align:center;border:none;cursor:pointer}
 .btn:hover{background:var(--blue)}
 .btn.lt{background:#fff;color:var(--navy)}
@@ -163,11 +180,12 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .st p{font-size:17px;color:var(--muted)}
 
 /* detail list rendered as a professional navy/white table */
-.list{margin-top:44px;max-width:1000px;border:1px solid var(--line);border-top:4px solid var(--navy);background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 14px 40px rgba(11,42,99,.07)}
+.list{position:relative;margin-top:44px;max-width:1000px;border:1px solid var(--line);background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 14px 40px rgba(11,42,99,.07)}
+.list::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--blue));z-index:2}
 .list .row{display:grid;grid-template-columns:300px 1fr;gap:28px;padding:24px 32px;border-top:1px solid var(--line);transition:background .18s}
 .list .row:first-child{border-top:none}
-.list .row:nth-child(even){background:var(--mist)}
-.list .row:hover{background:#EAF3FD}
+.list .row:nth-child(even){background:#EEF5FD}
+.list .row:hover{background:#E2EFFC}
 .list .row b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:19px;line-height:1.4;font-weight:700}
 .list .row p{color:var(--muted);font-size:18px}
 .list .row a{font-weight:700;color:var(--blue)}
