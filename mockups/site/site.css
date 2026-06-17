@@ -307,7 +307,7 @@ body.con .st b{font-size:20.5px}
 body.con .st p{font-size:18px}
 
 /* contact form: same card language as the .list tables (teal->blue top bar) */
-.form{position:relative;margin-top:44px;max-width:780px;border:1px solid var(--line);background:#fff;border-radius:6px;box-shadow:0 14px 40px rgba(11,42,99,.07);padding:40px 40px 36px}
+.form{position:relative;margin-top:44px;max-width:1000px;border:1px solid var(--line);background:#fff;border-radius:6px;box-shadow:0 14px 40px rgba(11,42,99,.07);padding:40px 40px 36px}
 .form::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:6px 6px 0 0}
 .form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .field{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
@@ -327,6 +327,7 @@ body.con .st p{font-size:18px}
 .form .submit-row .btn{cursor:pointer}
 .form-status{font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;color:#157347;display:none}
 .form-status.show{display:block}
+.form-status.err{color:#C0392B}
 .form-note{font-size:15.5px;color:var(--muted);margin-top:18px;max-width:60ch}
 
 /* services page: floating table of contents */
