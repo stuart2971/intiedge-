@@ -46,6 +46,38 @@
       <a class="btn rv" href="mailto:shelly@intiedge.com?subject=Discovery%20Call%20Request" style="margin-top:34px">Book a Discovery Call</a>
     </div>
 
+    <div class="block" id="message">
+      <h2 class="rv">Send a message</h2>
+      <p class="lede rv">Prefer to write first? Tell Shelly a little about your business and what you're hoping to improve. She reads every message personally.</p>
+      <form class="form rv" id="contactForm" novalidate>
+        <div class="grid2">
+          <div class="field">
+            <label for="cfName">Name <span class="req">*</span></label>
+            <input type="text" id="cfName" name="name" autocomplete="name" required>
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label for="cfEmail">Email <span class="req">*</span></label>
+            <input type="email" id="cfEmail" name="email" autocomplete="email" required>
+            <span class="err">Please enter a valid email address.</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-top">
+            <label for="cfBody">Message <span class="req">*</span></label>
+            <span class="count" id="cfCount">0 / 1000</span>
+          </div>
+          <textarea id="cfBody" name="body" rows="6" maxlength="1000" required></textarea>
+          <span class="err">Please enter a message (up to 1000 characters).</span>
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="btn">Send message</button>
+          <span class="form-status" id="cfStatus">Opening your email app&hellip;</span>
+        </div>
+        <p class="form-note">This opens your email app with the message ready to send to shelly@intiedge.com. Prefer to write it yourself? Email <a href="mailto:shelly@intiedge.com">shelly@intiedge.com</a> directly.</p>
+      </form>
+    </div>
+
     <div class="block">
       <h2 class="rv">Reach Shelly directly</h2>
       <p class="lede rv">However you prefer to start, you'll be talking with the founder, not a call centre.</p>

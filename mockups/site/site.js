@@ -87,6 +87,52 @@ document.querySelectorAll('.how-grid').forEach(grid => {
   tio.observe(grid);
 });
 
+// contact form: live character counter, validation, and mailto compose
+// (static site, no backend — matches the site's existing mailto pattern)
+const cForm = document.getElementById('contactForm');
+if (cForm) {
+  const LIMIT = 1000;
+  const name = document.getElementById('cfName');
+  const email = document.getElementById('cfEmail');
+  const body = document.getElementById('cfBody');
+  const count = document.getElementById('cfCount');
+  const status = document.getElementById('cfStatus');
+  const emailOK = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  const updateCount = () => {
+    const n = body.value.length;
+    count.textContent = n + ' / ' + LIMIT;
+    count.classList.toggle('over', n >= LIMIT);
+  };
+  body.addEventListener('input', updateCount);
+  updateCount();
+
+  // clear a field's error state as soon as the user fixes it
+  [name, email, body].forEach(el => el.addEventListener('input', () => el.closest('.field').classList.remove('invalid')));
+
+  cForm.addEventListener('submit', e => {
+    e.preventDefault();
+    status.classList.remove('show');
+    const checks = [
+      [name, name.value.trim().length > 0],
+      [email, emailOK(email.value.trim())],
+      [body, body.value.trim().length > 0 && body.value.length <= LIMIT]
+    ];
+    let firstBad = null;
+    checks.forEach(([el, ok]) => {
+      el.closest('.field').classList.toggle('invalid', !ok);
+      if (!ok && !firstBad) firstBad = el;
+    });
+    if (firstBad) { firstBad.focus(); return; }
+
+    const subject = 'Website enquiry from ' + name.value.trim();
+    const message = body.value.trim() + '\n\nFrom: ' + name.value.trim() + '\nEmail: ' + email.value.trim();
+    window.location.href = 'mailto:shelly@intiedge.com?subject=' +
+      encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+    status.classList.add('show');
+  });
+}
+
 // services page: floating table-of-contents scroll-spy (highlights the active practice)
 const toc = document.querySelector('.toc');
 if (toc) {
