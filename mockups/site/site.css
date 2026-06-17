@@ -37,7 +37,10 @@ a{text-decoration:none;color:var(--blue)}
 .layout{display:grid;grid-template-columns:368px 1fr;min-height:100dvh;max-width:1600px;margin:0 auto}
 
 /* sidebar */
-aside{border-right:1px solid var(--line);padding:38px 30px 26px 56px;position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 45%,#E9F1FB 100%);overflow-x:hidden;overflow-y:auto}
+aside{border-right:1px solid var(--line);padding:38px 30px 26px 56px;position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 45%,#E9F1FB 100%);overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+/* keep the sidebar scrollable on short viewports (so the CTA stays reachable)
+   but hide the scrollbar itself — Stuart asked for no visible navbar scrollbar */
+aside::-webkit-scrollbar{width:0;height:0;display:none}
 aside > :not(.aside-wave){position:relative;z-index:1}
 /* business-card wave: navy spine + bright-blue arc down the left edge of the sidebar */
 .aside-wave{position:absolute;left:0;top:0;height:100%;width:48px;z-index:0;pointer-events:none}
@@ -187,8 +190,8 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .list .row:nth-child(even){background:#EEF5FD}
 .list .row:hover{background:#E2EFFC}
 .list .row b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:19px;line-height:1.4;font-weight:700}
-.list .row p{color:var(--muted);font-size:18px}
-.list .row a{font-weight:700;color:var(--blue)}
+.list .row p{color:var(--muted);font-size:18px;overflow-wrap:anywhere}
+.list .row a{font-weight:700;color:var(--blue);overflow-wrap:anywhere}
 .list .row a:hover{color:var(--navy)}
 
 /* expectations grid */
@@ -252,6 +255,46 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
   .list .row{grid-template-columns:1fr;gap:8px;padding:20px 22px}
   .expect{grid-template-columns:1fr;gap:28px}
   .stats{grid-template-columns:1fr;gap:32px}
+  .form{padding:30px 24px 28px}
+  .form .grid2{grid-template-columns:1fr;gap:0}
+}
+
+/* mid-range: small laptops and landscape tablets keep the vertical sidebar,
+   but the heavy multi-column blocks are too cramped beside the 368px rail
+   (the 4/5-node timelines actually overflow). Ease them down a tier so the
+   1021-1240px range — e.g. 1024 landscape iPad, 1210x807 — stays clean. */
+@media (min-width:1021px) and (max-width:1240px){
+  .block{padding:52px 48px}
+  .how-grid,.how-grid.three,.how-grid.five{grid-template-columns:1fr;gap:30px}
+  .how-line{display:none}
+  .est-panel{grid-template-columns:1fr}
+  .about-card{grid-template-columns:1fr}
+  .about-card img{min-height:340px}
+  .cta-block{grid-template-columns:1fr;gap:32px}
+  .cta-block .actions{justify-self:start}
+  .cols{grid-template-columns:repeat(2,1fr);gap:40px}
+  .ai-caps{grid-template-columns:repeat(2,1fr);gap:32px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:40px}
+  .list .row{grid-template-columns:200px 1fr}
+  .colophon{padding:44px 48px}
+}
+
+/* very small phones: trim padding and equalise the persona pills so nothing
+   crowds the edges on 320-380px screens */
+@media (max-width:430px){
+  .block{padding:36px 18px}
+  .hero h1{font-size:clamp(30px,8.5vw,40px)}
+  .colophon{padding:28px 18px;flex-direction:column;gap:10px}
+  .controls{padding:30px 20px}
+  .result{padding:40px 24px}
+  .about-card .body{padding:36px 24px}
+  .ctl label{flex-wrap:wrap;gap:6px}
+}
+
+/* smallest phones (e.g. 320px): the persona pills can't both reach their text
+   width, so trim the type a touch to keep the two pills equal */
+@media (max-width:360px){
+  .persona-top .seg button{font-size:15px;padding:12px 4px}
 }
 
 /* contact page: larger type and a stronger table hierarchy */
@@ -262,6 +305,29 @@ body.con .list .row b{font-size:20px}
 body.con .list .row p{font-size:19px}
 body.con .st b{font-size:20.5px}
 body.con .st p{font-size:18px}
+
+/* contact form: same card language as the .list tables (teal->blue top bar) */
+.form{position:relative;margin-top:44px;max-width:780px;border:1px solid var(--line);background:#fff;border-radius:6px;box-shadow:0 14px 40px rgba(11,42,99,.07);padding:40px 40px 36px}
+.form::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:6px 6px 0 0}
+.form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.field:last-of-type{margin-bottom:0}
+.field-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.field label{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:16.5px}
+.field label .req{color:var(--blue)}
+.field input,.field textarea{-webkit-appearance:none;appearance:none;font-family:"Source Sans 3",Arial,sans-serif;font-size:17px;color:var(--ink);background:var(--mist);border:1px solid var(--line);border-radius:6px;padding:14px 16px;width:100%;transition:border-color .2s,box-shadow .2s,background .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(20,142,234,.15)}
+.field textarea{resize:vertical;min-height:150px;line-height:1.6}
+.field .count{font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.field .count.over{color:#C0392B;font-weight:700}
+.field .err{font-size:15px;color:#C0392B;font-weight:600;display:none}
+.field.invalid input,.field.invalid textarea{border-color:#C0392B;background:#fff}
+.field.invalid .err{display:block}
+.form .submit-row{margin-top:30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.form .submit-row .btn{cursor:pointer}
+.form-status{font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;color:#157347;display:none}
+.form-status.show{display:block}
+.form-note{font-size:15.5px;color:var(--muted);margin-top:18px;max-width:60ch}
 
 /* services page: floating table of contents */
 .toc{position:fixed;top:50%;right:28px;transform:translateY(-50%);width:248px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 50px rgba(11,42,99,.14);padding:18px 18px;z-index:40}
