@@ -92,6 +92,10 @@ document.querySelectorAll('.how-grid').forEach(grid => {
 const cForm = document.getElementById('contactForm');
 if (cForm) {
   const LIMIT = 1000;
+  // Web3Forms access key: paste the key from web3forms.com here to deliver
+  // submissions to shelly@intiedge.com. While empty, the form falls back to a
+  // mailto compose so it always does something.
+  const WEB3FORMS_KEY = '';
   const name = document.getElementById('cfName');
   const email = document.getElementById('cfEmail');
   const body = document.getElementById('cfBody');
@@ -110,9 +114,9 @@ if (cForm) {
   // clear a field's error state as soon as the user fixes it
   [name, email, body].forEach(el => el.addEventListener('input', () => el.closest('.field').classList.remove('invalid')));
 
-  cForm.addEventListener('submit', e => {
+  cForm.addEventListener('submit', async e => {
     e.preventDefault();
-    status.classList.remove('show');
+    status.classList.remove('show', 'err');
     const checks = [
       [name, name.value.trim().length > 0],
       [email, emailOK(email.value.trim())],
@@ -125,10 +129,48 @@ if (cForm) {
     });
     if (firstBad) { firstBad.focus(); return; }
 
+    // Web3Forms: post straight to Shelly's inbox without leaving the page.
+    if (WEB3FORMS_KEY) {
+      const btn = cForm.querySelector('button[type="submit"]');
+      const label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending...';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: 'Website enquiry from ' + name.value.trim(),
+            from_name: name.value.trim(),
+            name: name.value.trim(),
+            email: email.value.trim(),
+            message: body.value.trim()
+          })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          cForm.reset(); updateCount();
+          status.textContent = 'Thanks, your message is on its way. Shelly will be in touch soon.';
+          status.classList.add('show');
+        } else {
+          status.textContent = 'Something went wrong. Please email shelly@intiedge.com directly.';
+          status.classList.add('show', 'err');
+        }
+      } catch (err) {
+        status.textContent = 'Network error. Please email shelly@intiedge.com directly.';
+        status.classList.add('show', 'err');
+      } finally {
+        btn.disabled = false; btn.textContent = label;
+      }
+      return;
+    }
+
+    // fallback (until the access key is set): open the visitor's email app
     const subject = 'Website enquiry from ' + name.value.trim();
     const message = body.value.trim() + '\n\nFrom: ' + name.value.trim() + '\nEmail: ' + email.value.trim();
     window.location.href = 'mailto:shelly@intiedge.com?subject=' +
       encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+    status.textContent = 'Opening your email app...';
     status.classList.add('show');
   });
 }
