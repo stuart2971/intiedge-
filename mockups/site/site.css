@@ -155,6 +155,15 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .cols > div:nth-child(3) h3::before{background:var(--navy)}
 .cols p{color:var(--muted);font-size:18.5px;margin-top:14px}
 
+/* "Why IntiEdge" name story: two meaning cards — Inti = Core, Edge = Advantage */
+.meaning{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:36px 0 32px}
+.meaning-item{display:flex;align-items:center;gap:18px;padding:30px 36px;background:var(--mist);border:1px solid var(--line);border-radius:10px;position:relative;overflow:hidden}
+.meaning-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--teal),var(--blue))}
+.meaning-word{font-family:Montserrat,sans-serif;font-weight:800;font-size:32px;line-height:1}
+.meaning-word .brand{font-weight:800}
+.meaning-eq{font-family:Montserrat,sans-serif;font-weight:700;font-size:26px;color:var(--muted)}
+.meaning-def{font-family:Montserrat,sans-serif;font-weight:700;font-size:26px;color:var(--navy)}
+
 /* AI capability cards with illustrated headers */
 .ai-caps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}
 .ai-cap{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 14px 40px rgba(11,42,99,.07);transition:transform .25s,box-shadow .25s}
@@ -242,6 +251,8 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
   .persona-top .seg{width:100%}
   .hero-center{padding-bottom:36px}
   .cols{grid-template-columns:1fr}
+  .meaning{grid-template-columns:1fr;gap:16px;margin:28px 0 24px}
+  .meaning-item{padding:24px 26px}
   .ai-caps{grid-template-columns:1fr;gap:28px}
   .est-panel{grid-template-columns:1fr}
   .controls{padding:36px 28px}
