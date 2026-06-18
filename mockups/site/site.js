@@ -95,7 +95,7 @@ if (cForm) {
   // Web3Forms access key: paste the key from web3forms.com here to deliver
   // submissions to shelly@intiedge.com. While empty, the form falls back to a
   // mailto compose so it always does something.
-  const WEB3FORMS_KEY = '';
+  const WEB3FORMS_KEY = '4b8a4c54-7e47-4748-9dc6-1df0be0a692a';
   const name = document.getElementById('cfName');
   const email = document.getElementById('cfEmail');
   const body = document.getElementById('cfBody');
