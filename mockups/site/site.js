@@ -10,6 +10,17 @@ if (!reduce) {
   document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
 }
 
+// mobile: hamburger toggles the collapsed sidebar nav (app-bar pattern <=1020px)
+const aside = document.querySelector('aside');
+const navToggle = document.querySelector('.nav-toggle');
+if (aside && navToggle) {
+  navToggle.addEventListener('click', () => {
+    const open = aside.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+}
+
 // adaptive calculator (present on Home and AI Enablement)
 let applyCalcPersona = () => {};
 const rRep = document.getElementById('rRep');

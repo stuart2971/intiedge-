@@ -64,6 +64,16 @@ aside .foot{margin-top:auto;padding-top:28px}
 .btn.lt:hover{background:var(--mist)}
 aside .btn{display:block}
 
+/* mobile hamburger toggle — hidden on desktop, shown in the app bar <=1020px.
+   three bars that fold into an X when the sidebar carries .open */
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:48px;height:44px;padding:0 10px;background:#fff;border:1px solid var(--line);border-radius:10px;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.nav-toggle:hover{border-color:var(--blue)}
+.nav-toggle span{display:block;height:2.5px;width:100%;background:var(--navy);border-radius:2px;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s}
+aside.open .nav-toggle span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+aside.open .nav-toggle span:nth-child(2){opacity:0}
+aside.open .nav-toggle span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+@media (prefers-reduced-motion: reduce){.nav-toggle span{transition:none}}
+
 /* persona visibility */
 .sb-only{display:none}
 body.sb .sb-only{display:revert}
@@ -82,9 +92,6 @@ h2{font-size:clamp(28px,3vw,38px);letter-spacing:-.015em;line-height:1.18}
 .hero h1{font-size:clamp(36px,3.8vw,54px);line-height:1.12;letter-spacing:-.02em;font-weight:800;max-width:16em}
 .hero h1 span{color:var(--blue)}
 .hero p{margin:24px 0 34px;font-size:19.5px;color:var(--muted);max-width:34em}
-.band{overflow:hidden}
-.band img{width:100%;height:360px;object-fit:cover;object-position:center top;filter:saturate(.15)}
-.band-block{padding-top:0}
 /* home hero: toggle grouped at the top, title at eye level, skyline pulled up so it peeks into view */
 .hero-home{padding-top:48px;padding-bottom:0}
 .persona-top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:10vh}
@@ -218,12 +225,13 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .stats p{color:var(--muted);font-size:16.5px;margin-top:10px;max-width:30ch}
 
 /* leadership philosophy pull-quote (About) */
-.creed{position:relative;margin-top:28px;max-width:920px;padding:4px 0 4px 32px;font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:clamp(22px,2.5vw,30px);line-height:1.4;letter-spacing:-.01em}
+.creed-grid{margin-top:28px;display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+.creed{position:relative;padding:4px 0 4px 32px;font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:clamp(22px,2.4vw,30px);line-height:1.4;letter-spacing:-.01em}
 .creed::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:5px;border-radius:3px;background:linear-gradient(180deg,var(--teal),var(--blue))}
-.creed-body{margin-top:24px;display:grid;grid-template-columns:1fr;gap:16px 44px}
-.creed-body p{color:var(--muted);font-size:18.5px}
-/* desktop and small-laptop: the two paragraphs sit side by side so they fill the width */
-@media (min-width:1021px){.creed-body{grid-template-columns:1fr 1fr;gap:24px 44px}}
+.creed-body{display:grid;grid-template-columns:1fr;gap:14px}
+.creed-body p{color:var(--muted);font-size:17px;line-height:1.6}
+/* desktop and small-laptop: big quote left, supporting copy beside it to fill the width */
+@media (min-width:1021px){.creed-grid{grid-template-columns:1.05fr 1fr;gap:52px}}
 
 /* credential pills on white */
 .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
@@ -248,37 +256,45 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 
 @media (max-width: 1020px){
   .layout{grid-template-columns:1fr}
-  aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:28px 24px;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 100%)}
+  /* sidebar collapses into a sticky app bar: compact logo left, hamburger right,
+     nav + CTA tuck away and expand to a full-width tap list when .open */
+  aside{position:sticky;top:0;z-index:50;height:auto;overflow:visible;border-right:none;border-bottom:1px solid var(--line);padding:12px 18px;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:12px;row-gap:0;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 100%)}
   .aside-wave{display:none}
-  aside .logo .logo-mark{height:92px}
-  aside .logo .logo-word{width:172px}
-  aside nav{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-  aside nav a{border-left:none;border:1px solid transparent;border-radius:999px;padding:9px 16px}
-  aside nav a.on{border-color:var(--line);background:var(--mist)}
-  aside .persona{margin-top:24px;max-width:440px;margin-left:auto;margin-right:auto;width:100%}
-  aside .foot{margin-top:22px;max-width:440px;margin-left:auto;margin-right:auto;width:100%}
-  .block{padding:44px 24px}
-  .hero-home{padding-top:40px;padding-bottom:0}
-  .persona-top{margin-bottom:36px}
+  .nav-toggle{display:flex;justify-self:end}
+  aside .logo{flex-direction:row;align-items:center;gap:9px;justify-self:start}
+  aside .logo .logo-mark{height:44px}
+  aside .logo .logo-word{width:118px}
+  aside nav{grid-column:1 / -1;display:none;flex-direction:column;gap:0;margin-top:10px;border-top:1px solid var(--line)}
+  aside nav a{display:block;border:none;border-bottom:1px solid var(--line);border-left:3px solid transparent;border-radius:0;padding:15px 12px;font-size:18px}
+  aside nav a.on{border-left-color:var(--blue);background:var(--mist)}
+  aside .foot{grid-column:1 / -1;display:none;margin-top:24px;padding-top:0}
+  aside.open nav{display:flex}
+  aside.open .foot{display:block}
+  .block{padding:34px 18px}
+  .hero-home{padding-top:32px;padding-bottom:0}
+  .persona-top{margin-bottom:32px}
   .persona-top .seg{width:100%}
-  .hero-center{padding-bottom:36px}
-  .cols{grid-template-columns:1fr}
-  .meaning{grid-template-columns:1fr;gap:16px;margin:28px 0 24px}
-  .meaning-item{padding:24px 26px}
-  .ai-caps{grid-template-columns:1fr;gap:28px}
+  .hero-center{padding-bottom:30px}
+  .cols{grid-template-columns:1fr;gap:24px}
+  .meaning{grid-template-columns:1fr;gap:14px;margin:24px 0 22px}
+  .meaning-item{padding:22px 24px}
+  .ai-caps{grid-template-columns:1fr;gap:24px}
   .est-panel{grid-template-columns:1fr}
-  .controls{padding:36px 28px}
-  .how-grid,.how-grid.three,.how-grid.five{grid-template-columns:1fr;gap:28px}
+  .controls{padding:32px 22px}
+  .how-grid,.how-grid.three,.how-grid.five{grid-template-columns:1fr;gap:24px}
   .how-line{display:none}
   .about-card,.cta-block{grid-template-columns:1fr}
+  .about-card .body{padding:32px 24px}
+  .about-card img{min-height:300px}
+  .cta-block{gap:24px}
   .cta-block .actions{justify-self:start}
-  .colophon{padding:32px 24px}
-  .acc-head{padding:20px 22px}
-  .acc-body .inner{padding:2px 22px 24px}
-  .list .row{grid-template-columns:1fr;gap:8px;padding:20px 22px}
-  .expect{grid-template-columns:1fr;gap:28px}
-  .stats{grid-template-columns:1fr;gap:32px}
-  .form{padding:30px 24px 28px}
+  .colophon{padding:28px 18px}
+  .acc-head{padding:18px 18px}
+  .acc-body .inner{padding:2px 18px 22px}
+  .list .row{grid-template-columns:1fr;gap:6px;padding:18px 18px}
+  .expect{grid-template-columns:1fr;gap:24px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:24px 20px}
+  .form{padding:28px 20px 26px}
   .form .grid2{grid-template-columns:1fr;gap:0}
 }
 
@@ -305,12 +321,13 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 /* very small phones: trim padding and equalise the persona pills so nothing
    crowds the edges on 320-380px screens */
 @media (max-width:430px){
-  .block{padding:36px 18px}
+  .block{padding:30px 16px}
   .hero h1{font-size:clamp(30px,8.5vw,40px)}
-  .colophon{padding:28px 18px;flex-direction:column;gap:10px}
-  .controls{padding:30px 20px}
-  .result{padding:40px 24px}
-  .about-card .body{padding:36px 24px}
+  .colophon{padding:26px 16px;flex-direction:column;gap:10px}
+  .controls{padding:28px 18px}
+  .result{padding:36px 22px}
+  .about-card .body{padding:28px 20px}
+  .stats{gap:22px 16px}
   .ctl label{flex-wrap:wrap;gap:6px}
 }
 
