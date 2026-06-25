@@ -34,10 +34,10 @@ a{text-decoration:none;color:var(--blue)}
   }
 }
 
-.layout{display:grid;grid-template-columns:368px 1fr;min-height:100dvh;max-width:1600px;margin:0 auto}
+.layout{display:grid;grid-template-columns:320px 1fr;min-height:100dvh;max-width:1600px;margin:0 auto}
 
 /* sidebar */
-aside{border-right:1px solid var(--line);padding:38px 30px 26px 56px;position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 45%,#E9F1FB 100%);overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+aside{border-right:1px solid var(--line);padding:38px 24px 26px 48px;position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8FC 45%,#E9F1FB 100%);overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
 /* keep the sidebar scrollable on short viewports (so the CTA stays reachable)
    but hide the scrollbar itself — Stuart asked for no visible navbar scrollbar */
 aside::-webkit-scrollbar{width:0;height:0;display:none}
@@ -62,7 +62,7 @@ aside .foot{margin-top:auto;padding-top:28px}
 .btn:hover{background:var(--blue)}
 .btn.lt{background:#fff;color:var(--navy)}
 .btn.lt:hover{background:var(--mist)}
-aside .btn{display:block}
+aside .btn{display:block;padding-left:20px;padding-right:20px}
 
 /* mobile hamburger toggle — hidden on desktop, shown in the app bar <=1020px.
    three bars that fold into an X when the sidebar carries .open */
@@ -92,8 +92,29 @@ h2{font-size:clamp(28px,3vw,38px);letter-spacing:-.015em;line-height:1.18}
 .hero h1{font-size:clamp(36px,3.8vw,54px);line-height:1.12;letter-spacing:-.02em;font-weight:800;max-width:16em}
 .hero h1 span{color:var(--blue)}
 .hero p{margin:24px 0 34px;font-size:19.5px;color:var(--muted);max-width:34em}
-/* home hero: toggle grouped at the top, title at eye level, skyline pulled up so it peeks into view */
-.hero-home{padding-top:48px;padding-bottom:0}
+/* home hero: toggle grouped at the top, title at eye level, with the ascending
+   staircase/skyline image behind. A navy-blue radial hue glows around the
+   headline so the white text reads, while the rising arrow and skyline stay
+   faintly visible through the tint on the right. */
+.hero-home{
+  padding-top:48px;padding-bottom:0;
+  background-image:
+    radial-gradient(125% 135% at 33% 52%, rgba(6,22,55,.84) 0%, rgba(9,31,78,.66) 32%, rgba(13,46,104,.36) 54%, rgba(16,55,120,.1) 73%, rgba(16,55,120,0) 88%),
+    linear-gradient(90deg, rgba(6,22,55,.5) 0%, rgba(9,31,78,.22) 44%, rgba(11,42,99,0) 70%),
+    url("assets/hero-background.png");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:right center;
+  color:#fff;
+}
+/* light headline + accents over the blue hue, with a soft shadow for crispness */
+.hero-home h1{color:#fff;text-shadow:0 2px 20px rgba(4,16,42,.55)}
+.hero-home h1 span{color:#7FD4E8}
+.hero-home p{color:#DCE8FB;text-shadow:0 1px 12px rgba(4,16,42,.5)}
+.hero-home .persona-top .q{color:#EAF2FF}
+/* the primary CTA would blend into the navy hue, so brighten it for the hero */
+.hero-home .hero-center .btn{background:var(--blue);box-shadow:0 12px 32px rgba(6,22,55,.5)}
+.hero-home .hero-center .btn:hover{background:#3AA6F4}
 .persona-top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:10vh}
 .persona-top .q{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);font-size:18.5px}
 .persona-top .seg{display:inline-flex;width:330px;flex:0 0 auto}
@@ -128,6 +149,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .about-card .body{padding:56px}
 .about-card .role{color:#7FD4E8;font-weight:700;font-family:Montserrat,sans-serif;font-size:15px;letter-spacing:.12em;text-transform:uppercase}
 .about-card h2{color:#fff;margin:10px 0 0}
+.about-card .bio-title{color:#EAF2FF;font-family:Montserrat,sans-serif;font-weight:600;font-size:18.5px;line-height:1.4;margin-top:14px}
 .about-card .creds{color:#8FD8EC;font-family:Montserrat,sans-serif;font-weight:600;font-size:16px;margin-top:8px}
 .about-card p{color:#D6E4FA;margin-top:18px;max-width:50ch;font-size:17.5px}
 .about-card .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
@@ -156,9 +178,11 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 
 /* dash columns */
 .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:48px}
-.cols h3{font-size:22px;display:flex;align-items:baseline;gap:14px}
+.cols h3{font-size:22px;display:flex;align-items:baseline;gap:14px;color:var(--blue)}
 .cols h3::before{content:"";width:38px;height:5px;flex-shrink:0;background:var(--blue);transform:translateY(-5px)}
+.cols > div:nth-child(2) h3{color:var(--teal)}
 .cols > div:nth-child(2) h3::before{background:var(--teal)}
+.cols > div:nth-child(3) h3{color:var(--navy)}
 .cols > div:nth-child(3) h3::before{background:var(--navy)}
 .cols p{color:var(--muted);font-size:18.5px;margin-top:14px}
 
@@ -197,6 +221,25 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .st b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:19.5px;display:block}
 .st i{font-style:normal;color:var(--teal);font-weight:600;font-size:16.5px;display:block;margin:4px 0 10px}
 .st p{font-size:17px;color:var(--muted)}
+/* each timeline node's label and week range take the colour of its own dot */
+.st:nth-child(2) b,.st:nth-child(2) i{color:var(--blue)}
+.st:nth-child(3) b,.st:nth-child(3) i{color:var(--teal)}
+.st:nth-child(4) b,.st:nth-child(4) i{color:var(--navy)}
+.st:nth-child(5) b,.st:nth-child(5) i{color:var(--blue)}
+.how-grid.five .st:nth-child(6) b,.how-grid.five .st:nth-child(6) i{color:var(--teal)}
+
+/* why-intiedge "Finance + Operations + AI" bridge: a distinct on-brand colour
+   per node — lifted from the logo wordmark — on both the dot and its label */
+#bridgeGrid .st:nth-child(2) b,#bridgeGrid .st:nth-child(2) i{color:#162C4A}
+#bridgeGrid .st:nth-child(2)::before{border-color:#162C4A}
+#bridgeGrid .st:nth-child(3) b,#bridgeGrid .st:nth-child(3) i{color:#057B86}
+#bridgeGrid .st:nth-child(3)::before{border-color:#057B86}
+#bridgeGrid .st:nth-child(4) b,#bridgeGrid .st:nth-child(4) i{color:#0B849D}
+#bridgeGrid .st:nth-child(4)::before{border-color:#0B849D}
+#bridgeGrid .st:nth-child(5) b,#bridgeGrid .st:nth-child(5) i{color:#0C86B9}
+#bridgeGrid .st:nth-child(5)::before{border-color:#0C86B9}
+#bridgeGrid .st:nth-child(6) b,#bridgeGrid .st:nth-child(6) i{color:#047AC9}
+#bridgeGrid .st:nth-child(6)::before{border-color:#047AC9}
 
 /* detail list rendered as a professional navy/white table */
 .list{position:relative;margin-top:44px;max-width:1000px;border:1px solid var(--line);background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 14px 40px rgba(11,42,99,.07)}
@@ -215,7 +258,8 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .expect > div{display:grid;grid-template-columns:auto 1fr;gap:18px}
 .expect > div::before{content:"";width:30px;height:5px;background:var(--blue);margin-top:10px}
 .expect > div:nth-child(even)::before{background:var(--teal)}
-.expect b{font-family:Montserrat,sans-serif;color:var(--navy);font-size:17.5px;display:block}
+.expect b{font-family:Montserrat,sans-serif;color:var(--blue);font-size:17.5px;display:block}
+.expect > div:nth-child(even) b{color:var(--teal)}
 .expect p{color:var(--muted);font-size:16.5px;margin-top:6px}
 
 /* stats */
@@ -237,9 +281,54 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
 .tags span{border:1px solid var(--line);background:var(--mist);border-radius:999px;padding:9px 18px;font-size:16px;font-weight:600;color:var(--navy)}
 
+/* client success: case study cards (challenge + solution, then a highlighted
+   results band, finished with a row of focus tags) */
+.case{position:relative;border:1px solid var(--line);background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(11,42,99,.07);margin-top:40px}
+.case::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--blue));z-index:2}
+.case-head{padding:34px 36px 0}
+.case-head .kicker{margin-bottom:10px}
+.case-head h2{font-size:clamp(23px,2.2vw,29px);line-height:1.22}
+.case-head .client{color:var(--muted);font-size:16.5px;font-weight:600;margin-top:10px}
+.case-cols{display:grid;grid-template-columns:1fr;gap:28px;padding:26px 36px 32px}
+.case-sect h3{font-family:Montserrat,sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.case-sect p{color:var(--muted);font-size:17px}
+.case-sect p+p{margin-top:12px}
+.case-sect ul{list-style:none;margin-top:10px;display:grid;gap:9px}
+.case-sect li{position:relative;padding-left:20px;color:var(--muted);font-size:16.5px;line-height:1.5}
+.case-sect li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.case-results{background:#EEF5FD;border-top:1px solid var(--line);padding:28px 36px}
+.case-results h3{font-family:Montserrat,sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);margin-bottom:16px}
+.case-results .wins{list-style:none;display:grid;grid-template-columns:1fr;gap:11px 40px}
+.case-results .wins li{position:relative;padding-left:30px;color:var(--ink);font-size:16.5px;line-height:1.5;font-weight:600}
+.case-results .wins li::before{content:"";position:absolute;left:4px;top:1px;width:8px;height:14px;border:solid var(--blue);border-width:0 3px 3px 0;transform:rotate(45deg)}
+.case-services{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:20px 36px;border-top:1px solid var(--line)}
+.case-services .lbl{font-family:Montserrat,sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.case-services .tag{border:1px solid var(--line);background:var(--mist);border-radius:999px;padding:6px 14px;font-size:14.5px;font-weight:600;color:var(--navy)}
+/* roomy layouts: split challenge/solution and the wins into two columns */
+@media (min-width:1241px){
+  .case-cols{grid-template-columns:1fr 1fr;gap:44px}
+  .case-results .wins{grid-template-columns:1fr 1fr}
+}
+
 /* quiet section link */
 .more{display:inline-block;margin-top:32px;font-family:Montserrat,sans-serif;font-weight:700;font-size:16.5px;color:var(--navy);border-bottom:2px solid var(--blue);padding-bottom:3px;transition:color .2s}
 .more:hover{color:var(--blue)}
+
+/* home "from estimate to evidence" proof band — uses the site's signature navy
+   panel gradient (same as the About card and calculator result) so it reads as a
+   feature panel that belongs, with a bright-blue accent on the proof figures */
+.proof-band{display:grid;grid-template-columns:1fr;gap:30px;align-items:center;background:linear-gradient(135deg,var(--navy) 0%,#0D3A7E 75%,#10518F 130%);color:#fff;border-radius:14px;padding:36px 32px;box-shadow:0 24px 60px rgba(11,42,99,.18)}
+.proof-band h2{color:#fff}
+.proof-band p{color:#D6E4FA;margin-top:14px;font-size:18.5px;max-width:42ch}
+.proof-band .btn.lt{margin-top:28px;color:var(--navy)}
+.proof-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px 36px}
+.proof-stat{border-left:4px solid var(--blue);padding-left:20px}
+.proof-stat b{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(38px,4vw,52px);line-height:1;display:block;letter-spacing:-.01em;color:#fff}
+.proof-stat span{display:block;margin-top:8px;color:#C7D5F2;font-size:16.5px;line-height:1.4}
+@media (min-width:1241px){
+  .proof-band{grid-template-columns:1.3fr 1fr;gap:52px;padding:48px 52px}
+  .proof-stats{grid-template-columns:1fr;gap:28px}
+}
 
 /* CTA */
 .cta-block{display:grid;grid-template-columns:2fr 1fr;gap:56px;align-items:center}
@@ -249,6 +338,9 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 
 .colophon{padding:44px 72px;color:var(--muted);font-size:17px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .colophon a{color:var(--navy);font-weight:600}
+/* confidentiality fine print: drops onto its own full-width line below the
+   contact row, set off by a hairline rule */
+.colophon .disclaimer{width:100%;padding-top:18px;border-top:1px solid var(--line);font-size:15.5px;line-height:1.55;color:var(--muted)}
 
 .rv{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .rv.in{opacity:1;transform:none}
@@ -271,7 +363,13 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
   aside.open nav{display:flex}
   aside.open .foot{display:block}
   .block{padding:34px 18px}
-  .hero-home{padding-top:32px;padding-bottom:0}
+  /* full-width text on mobile, so use an even blue veil (text is white here too)
+     and anchor the image bottom-right so the arrow stays in frame */
+  .hero-home{padding-top:32px;padding-bottom:0;
+    background-image:
+      linear-gradient(180deg,rgba(7,24,58,.84) 0%,rgba(9,31,78,.7) 55%,rgba(11,42,99,.86) 100%),
+      url("assets/hero-background.png");
+    background-position:right bottom}
   .persona-top{margin-bottom:32px}
   .persona-top .seg{width:100%}
   .hero-center{padding-bottom:30px}
@@ -292,6 +390,11 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
   .acc-head{padding:18px 18px}
   .acc-body .inner{padding:2px 18px 22px}
   .list .row{grid-template-columns:1fr;gap:6px;padding:18px 18px}
+  .proof-band{padding:32px 22px;gap:26px}
+  .case-head{padding:26px 22px 0}
+  .case-cols{gap:24px;padding:22px 22px 26px}
+  .case-results{padding:24px 22px}
+  .case-services{padding:18px 22px}
   .expect{grid-template-columns:1fr;gap:24px}
   .stats{grid-template-columns:repeat(2,1fr);gap:24px 20px}
   .form{padding:28px 20px 26px}
@@ -328,6 +431,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
   .result{padding:36px 22px}
   .about-card .body{padding:28px 20px}
   .stats{gap:22px 16px}
+  .proof-stats{grid-template-columns:1fr;gap:18px}
   .ctl label{flex-wrap:wrap;gap:6px}
 }
 
@@ -370,21 +474,10 @@ body.con .st p{font-size:18px}
 .form-status.err{color:#C0392B}
 .form-note{font-size:15.5px;color:var(--muted);margin-top:18px;max-width:60ch}
 
-/* services page: floating table of contents */
-.toc{position:fixed;top:50%;right:28px;transform:translateY(-50%);width:248px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 50px rgba(11,42,99,.14);padding:18px 18px;z-index:40}
-.toc-title{font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-.toc ul{list-style:none}
-.toc-group{margin-top:12px}
-.toc-group:first-child{margin-top:0}
-.toc-head{display:block;font-family:Montserrat,sans-serif;font-weight:700;font-size:16.5px;color:var(--navy);padding:2px 0;line-height:1.25;transition:color .2s}
-.toc-head:hover,.toc-head.on{color:var(--blue)}
-.toc-sub{margin-top:5px;padding-left:14px;border-left:2px solid var(--line);display:grid;gap:0;transition:border-color .2s}
-.toc-group.on .toc-sub{border-left-color:var(--blue)}
-.toc-sub a{display:block;font-size:15.5px;color:var(--muted);padding:3px 0;line-height:1.3;transition:color .2s}
-.toc-sub a:hover{color:var(--blue)}
-/* services page: anchor jumps land at eye level, not jammed to the very top */
-body.svc [id]{scroll-margin-top:30vh}
-/* services page: hero sits at eye level instead of the top (desktop only) */
-@media (min-width:1021px){ body.svc .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center} }
-@media (min-width:1281px){ body.svc main .block{padding-right:320px} }
-@media (max-width:1280px){ .toc{display:none} }
+/* home hero fills ~90% of the viewport on desktop, content vertically centered
+   so the headline stays within the blue glow */
+@media (min-width:1021px){
+  .hero-home{min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+  .hero-home .persona-top{margin-bottom:7vh}
+  .hero-home .hero-center{padding-bottom:0}
+}
